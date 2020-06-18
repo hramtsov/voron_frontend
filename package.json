@@ -1,0 +1,31 @@
+{
+  "name": "frontend",
+  "version": "1.0.0",
+  "description": "Voron black. Back-office of carsharing",
+  "author": "Pavel Khramtsov",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@nuxtjs/auth": "^4.9.1",
+    "@nuxtjs/axios": "^5.3.6",
+    "async-validator": "^3.3.0",
+    "dotenv": "^8.2.0",
+    "iview": "^3.1.5",
+    "less": "^3.11.3",
+    "less-loader": "^6.1.0",
+    "moment": "^2.26.0",
+    "nuxt": "^2.0.0",
+    "v-click-outside": "^3.0.1",
+    "view-design": "^4.2.0"
+  },
+  "devDependencies": {
+    "@nuxtjs/style-resources": "^1.0.0",
+    "node-sass": "^4.14.1",
+    "sass-loader": "^8.0.2"
+  }
+}

@@ -1,0 +1,12 @@
+.idea
+.idea/
+.vscode
+*.iml
+
+node_modules
+package-lock.json
+nuxt
+dist
+*.log
+
+.env
