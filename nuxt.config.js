@@ -13,7 +13,7 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Система каршеринга бизнес-класса Ворон Блэк' }
+      { hid: 'description', name: 'description', content: 'Система каршеринга бизнес-класса «Ворон»' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
@@ -34,7 +34,7 @@ export default {
 
   loading: {
     name: 'chasing-dots',
-    color: 'rgba(0,0,0,0.6)',
+    color: 'rgba(0,0,0,0.3)',
     background: 'white',
     height: '3px'
   },
@@ -46,8 +46,10 @@ export default {
   */
   plugins: [
     '@/plugins/iview',
-    '@/plugins/global_component',
+    '@/plugins/components',
     '@/plugins/filters',
+    '@/plugins/methods',
+    '@/plugins/axios',
   ],
   /*
   ** Nuxt.js dev-modules
@@ -88,7 +90,9 @@ export default {
       logout: '/login',
       // callback: '/login',
       home: '/'
-    }
+    },
+
+    resetOnError: true,
   },
 
   styleResources: {

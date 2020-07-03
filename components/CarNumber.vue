@@ -54,7 +54,7 @@
         border-color: #000;
         border-radius: 4px;
         line-height: 31px;
-        font-family: 'Fira Sans Condensed', sans-serif;
+        /*font-family: 'Fira Sans Condensed', sans-serif;*/
         font-family: 'Fira Sans', sans-serif;
         text-transform: uppercase;
         color: rgba(0,0,0,0.8);

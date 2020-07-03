@@ -1,6 +1,6 @@
-# frontend
+# Frontend
 
-> My classy Nuxt.js project
+> Voron black. Back-office of carsharing
 
 ## Build Setup
 

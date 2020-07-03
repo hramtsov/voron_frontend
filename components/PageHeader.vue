@@ -1,22 +1,19 @@
 <template>
 
-
-    <div class="media mb-5">
+    <div class="media mb-3">
         <span class="breadcrumb-icon mr-4">
             <Icon :custom="icon" size="30" color="rgba(0,0,0,0.3)" />
         </span>
         <div class="media-body">
             <h1 class="page-title">{{ title }}</h1>
         </div>
+
+        <div class="buttons">
+            <slot name="buttons"></slot>
+        </div>
+
     </div>
 
-
-
-
-<!--    <div class="mb-5">-->
-
-<!--        <h1><div class="page-icon"><Icon :custom="icon" size="30" color="rgba(0,0,0,0.3)" /></div>{{ title }}</h1>-->
-<!--    </div>-->
 </template>
 
 <script>

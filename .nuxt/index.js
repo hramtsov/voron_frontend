@@ -12,11 +12,13 @@ import { createStore } from './store.js'
 
 /* Plugins */
 
-import nuxt_plugin_axios_03af3f18 from 'nuxt_plugin_axios_03af3f18' // Source: ./axios.js (mode: 'all')
+import nuxt_plugin_axios_26166851 from 'nuxt_plugin_axios_26166851' // Source: ./axios.js (mode: 'all')
 import nuxt_plugin_iview_2298c11a from 'nuxt_plugin_iview_2298c11a' // Source: ../plugins/iview (mode: 'all')
-import nuxt_plugin_globalcomponent_391a7955 from 'nuxt_plugin_globalcomponent_391a7955' // Source: ../plugins/global_component (mode: 'all')
+import nuxt_plugin_components_567e580a from 'nuxt_plugin_components_567e580a' // Source: ../plugins/components (mode: 'all')
 import nuxt_plugin_filters_2abc1387 from 'nuxt_plugin_filters_2abc1387' // Source: ../plugins/filters (mode: 'all')
-import nuxt_plugin_plugin_c23ecb58 from 'nuxt_plugin_plugin_c23ecb58' // Source: ./auth/plugin.js (mode: 'all')
+import nuxt_plugin_methods_d2c08984 from 'nuxt_plugin_methods_d2c08984' // Source: ../plugins/methods (mode: 'all')
+import nuxt_plugin_axios_2228ef02 from 'nuxt_plugin_axios_2228ef02' // Source: ../plugins/axios (mode: 'all')
+import nuxt_plugin_plugin_826f9666 from 'nuxt_plugin_plugin_826f9666' // Source: ./auth/plugin.js (mode: 'all')
 
 // Component: <ClientOnly>
 Vue.component(ClientOnly.name, ClientOnly)
@@ -47,7 +49,7 @@ Vue.use(Meta, {"keyName":"head","attribute":"data-n-head","ssrAttribute":"data-n
 
 const defaultTransition = {"name":"page","mode":"out-in","appear":true,"appearClass":"appear","appearActiveClass":"appear-active","appearToClass":"appear-to"}
 
-async function createApp (ssrContext) {
+async function createApp(ssrContext, config = {}) {
   const router = await createRouter(ssrContext)
 
   const store = createStore(ssrContext)
@@ -59,7 +61,7 @@ async function createApp (ssrContext) {
   // here we inject the router and store to all child components,
   // making them available everywhere as `this.$router` and `this.$store`.
   const app = {
-    head: {"title":"Voron Black Application","meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"description","name":"description","content":"Система каршеринга бизнес-класса Ворон Блэк"}],"link":[{"rel":"icon","type":"image\u002Fx-icon","href":"\u002Ffavicon.ico"}],"style":[],"script":[]},
+    head: {"title":"Voron Black Application","meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"description","name":"description","content":"Система каршеринга бизнес-класса «Ворон»"}],"link":[{"rel":"icon","type":"image\u002Fx-icon","href":"\u002Ffavicon.ico"}],"style":[],"script":[]},
 
     store,
     router,
@@ -132,7 +134,7 @@ async function createApp (ssrContext) {
     ssrContext
   })
 
-  const inject = function (key, value) {
+  function inject(key, value) {
     if (!key) {
       throw new Error('inject(key, value) has no key provided')
     }
@@ -143,6 +145,10 @@ async function createApp (ssrContext) {
     key = '$' + key
     // Add into app
     app[key] = value
+    // Add into context
+    if (!app.context[key]) {
+      app.context[key] = value
+    }
 
     // Add into store
     store[key] = app[key]
@@ -165,6 +171,9 @@ async function createApp (ssrContext) {
     })
   }
 
+  // Inject runtime config as $config
+  inject('config', config)
+
   if (process.client) {
     // Replace store state before plugins execution
     if (window.__NUXT__ && window.__NUXT__.state) {
@@ -172,26 +181,48 @@ async function createApp (ssrContext) {
     }
   }
 
+  // Add enablePreview(previewData = {}) in context for plugins
+  if (process.static && process.client) {
+    app.context.enablePreview = function (previewData = {}) {
+      app.previewData = Object.assign({}, previewData)
+      inject('preview', previewData)
+    }
+  }
   // Plugin execution
 
-  if (typeof nuxt_plugin_axios_03af3f18 === 'function') {
-    await nuxt_plugin_axios_03af3f18(app.context, inject)
+  if (typeof nuxt_plugin_axios_26166851 === 'function') {
+    await nuxt_plugin_axios_26166851(app.context, inject)
   }
 
   if (typeof nuxt_plugin_iview_2298c11a === 'function') {
     await nuxt_plugin_iview_2298c11a(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_globalcomponent_391a7955 === 'function') {
-    await nuxt_plugin_globalcomponent_391a7955(app.context, inject)
+  if (typeof nuxt_plugin_components_567e580a === 'function') {
+    await nuxt_plugin_components_567e580a(app.context, inject)
   }
 
   if (typeof nuxt_plugin_filters_2abc1387 === 'function') {
     await nuxt_plugin_filters_2abc1387(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_plugin_c23ecb58 === 'function') {
-    await nuxt_plugin_plugin_c23ecb58(app.context, inject)
+  if (typeof nuxt_plugin_methods_d2c08984 === 'function') {
+    await nuxt_plugin_methods_d2c08984(app.context, inject)
+  }
+
+  if (typeof nuxt_plugin_axios_2228ef02 === 'function') {
+    await nuxt_plugin_axios_2228ef02(app.context, inject)
+  }
+
+  if (typeof nuxt_plugin_plugin_826f9666 === 'function') {
+    await nuxt_plugin_plugin_826f9666(app.context, inject)
+  }
+
+  // Lock enablePreview in context
+  if (process.static && process.client) {
+    app.context.enablePreview = function () {
+      console.warn('You cannot call enablePreview() outside a plugin.')
+    }
   }
 
   // If server-side, wait for async component to be resolved first

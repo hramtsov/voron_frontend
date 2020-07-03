@@ -1,6 +1,7 @@
 <template>
   <div>
-    <PageHeader title="Поездки" icon="fad fa-pennant" />
+    <PageHeader title="Менеджеры" icon="fad fa-user-friends" />
+
   </div>
 </template>
 
@@ -9,7 +10,7 @@
 export default {
   middleware: ['auth', 'page'],
   head: {
-    title: 'Поездки / VORON BLACK'
+    title: 'Менеджеры / VORON BLACK'
   },
 }
 </script>

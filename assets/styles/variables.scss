@@ -304,7 +304,31 @@ $blue_gray-1000: #11171a;
 
 $divider-color: $gray-300;
 
+$sidebar-menu-width: 220px;
 
+
+
+
+
+@mixin font-lite () {
+  font-family: 'Proxima Nova Lt';
+  font-weight: 400;
+}
+
+@mixin font-regular () {
+  font-family: 'Proxima Nova Rg';
+  font-weight: 400;
+}
+
+@mixin font-medium () {
+  font-family: 'Proxima Nova Lt';
+  font-weight: 600;
+}
+
+@mixin font-bold () {
+  font-family: 'Proxima Nova Rg';
+  font-weight: 600;
+}
 
 
 

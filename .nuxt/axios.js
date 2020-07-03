@@ -137,8 +137,8 @@ const setupProgress = (axios) => {
 export default (ctx, inject) => {
   // baseURL
   const baseURL = process.browser
-      ? 'https://kohana.dev/backend/api/v1'
-      : (process.env._AXIOS_BASE_URL_ || 'https://kohana.dev/backend/api/v1')
+      ? 'https://voron.dev/v1'
+      : (process.env._AXIOS_BASE_URL_ || 'https://voron.dev/v1')
 
   // Create fresh objects for all default header scopes
   // Axios creates only one which is shared across SSR requests!

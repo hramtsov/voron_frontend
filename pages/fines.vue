@@ -3,45 +3,51 @@
 
         <PageHeader title="Штрафы" icon="fad fa-traffic-light"/>
 
-        <Table row-key="id" :columns="fines_columns" :data="fines" show-summary2>
+        <div class="card-box p-4">
+            <Table row-key="id" :columns="fines_columns" :data="fines" show-summary2 :summary-method="handleSummary">
 
-            <template slot-scope="{ row }" slot="number">
-                <CarNumber :number="row.number"/>
-            </template>
-
-            <template slot-scope="{ row }" slot="amount">
-                <span class="number-hl">{{ row.amount | number }}</span><span class="unit">₽</span>
-            </template>
-
-
-            <template slot-scope="{ row }" slot="date">
-                <template v-if="row.date">{{ row.date | date_td }} <span class="dtime">{{ row.date | date_t }}</span>
+                <template slot-scope="{ row }" slot="id">
+                    <span class="less-important">{{ row.id }}</span>
                 </template>
-                <template v-else>
-                    <a><span class='data-empty'>Дата отсутствует</span></a>
+
+                <template slot-scope="{ row }" slot="number">
+                    <CarNumber :number="row.number"/>
                 </template>
-            </template>
 
-
-            <template slot-scope="{ row }" slot="about">
-                <template v-if="row.about">{{ row.about }}</template>
-                <template v-else>
-                    <a><span class='data-empty'>Описание отсутствует</span></a>
+                <template slot-scope="{ row }" slot="amount">
+                    <span class="number-hl">{{ row.amount | number }}</span><span class="unit">₽</span>
                 </template>
-            </template>
 
-            <template slot-scope="{ row, index }" slot="action">
-                <Button type="primary" size="small" @click="confirm_fine(row.id)">Оштрафовать</Button>
-            </template>
 
-            <template slot-scope="{ row, index }" slot="remove">
-                <Tooltip content="Удалить" placement="top" v-if="$auth.user.permissions.fine_delete">
-                    <Icon @click="confirm_remove(row.id)" custom="fas fa-times"></Icon>
-                </Tooltip>
+                <template slot-scope="{ row }" slot="date">
+                    <template v-if="row.date">{{ row.date | date_td }} <span class="dtime">{{ row.date | date_t }}</span>
+                    </template>
+                    <template v-else>
+                        <a><span class='data-empty'>Дата отсутствует</span></a>
+                    </template>
+                </template>
 
-            </template>
 
-        </Table>
+                <template slot-scope="{ row }" slot="about">
+                    <template v-if="row.about">{{ row.about }}</template>
+                    <template v-else>
+                        <a><span class='data-empty'>Описание отсутствует</span></a>
+                    </template>
+                </template>
+
+                <template slot-scope="{ row, index }" slot="action">
+                    <Button type="primary" size="small" @click="confirm_fine(row.id)">Оштрафовать</Button>
+                </template>
+
+                <template slot-scope="{ row, index }" slot="remove">
+                    <Tooltip content="Удалить" placement="top" v-if="$can('fines/delete')" :transfer="true">
+                        <a @click="confirm_remove(row.id)"><Icon custom="fas fa-times red-color mx-1 my-1"></Icon></a>
+                    </Tooltip>
+
+                </template>
+
+            </Table>
+        </div>
 
 
         <Modal v-model="modal.delete.show" title="Вы действительно хотите удалить штраф?">
@@ -109,24 +115,28 @@
                 fines_columns: [
                     {
                         title: 'ID',
+                        slot: 'id',
                         key: 'id',
-                        width: 80,
+                        width: 70,
+                        sortable: true,
                     },
                     {
                         title: 'Автомобиль',
                         slot: 'number',
-                        width: 160,
+                        width: 150,
+                        key: 'number',
+                        sortable: true,
                     },
                     {
                         title: 'Постановление',
                         key: 'act',
-                        width: 280,
+                        width: 270,
                     },
                     {
                         title: 'Сумма',
                         key: 'amount',
                         slot: 'amount',
-                        width: 150,
+                        width: 120,
                         sortable: true,
                         filters: [
                             {
@@ -151,7 +161,7 @@
                         title: 'Время нарушения',
                         key: 'date',
                         slot: 'date',
-                        width: 210,
+                        width: 200,
                         filters: [
                             {
                                 label: 'С датой',
@@ -190,7 +200,7 @@
                         title: ' ',
                         slot: 'remove',
                         align: 'center',
-                        width: 80,
+                        width: 60,
                     },
                 ],
                 fines: []
@@ -217,7 +227,7 @@
 
             async load() {
                 try {
-                    let response = await this.$axios.$get('/fines/getlist', {progress: true})
+                    let response = await this.$axios.$get('/fines/getlist', {progress: false})
                     this.fines = response.data
                 } catch (error) {
                     this.$Notice.error({
@@ -288,6 +298,41 @@
 
                 this.modal.fine.show = false
             },
+
+
+
+            handleSummary ({ columns, data }) {
+                const sums = {};
+                columns.forEach((column, index) => {
+                    const key = column.key;
+
+                    if (key != 'amount') {
+                        sums[key] = {
+                            key,
+                            value: ''
+                        };
+                        return;
+                    }
+
+                    const values = data.map(item => Number(item[key]));
+                    if (!values.every(value => isNaN(value))) {
+                        const v = values.reduce((prev, curr) => {
+                            const value = Number(curr);
+                            if (!isNaN(value)) {
+                                return prev + curr;
+                            } else {
+                                return prev;
+                            }
+                        }, 0);
+                        sums[key] = {
+                            key,
+                            value: '<span class="number-hl">' + v + '</span><span class="unit">₽</span>'
+                        };
+                    }
+                });
+
+                return sums;
+            }
 
         },
 

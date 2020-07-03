@@ -6,6 +6,74 @@
         </Col>
         <Col>
 
+
+<!--            <Dropdown trigger="click" placement="bottom-end">-->
+<!--                <Icon custom="fas fa-ellipsis-v"></Icon>-->
+<!--                <DropdownMenu slot="list">-->
+
+<!--                    <DropdownItem>-->
+
+<!--                        <div class="dropdown-into">-->
+<!--                            <div class="dropdown-icon">-->
+<!--                                <Icon custom="fad fa-car-wash" />-->
+<!--                            </div>-->
+<!--                            <div class="dropdown-info">-->
+<!--                                <div class="dropdown-title">Парк автомобилей</div>-->
+<!--                                <div class="dropdown-text">Разнообразный и богатый опыт начало повседневной работы по формированию позиции в значительной степени обуславливает создание новых предложений.</div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+
+<!--                    </DropdownItem>-->
+<!--                    <DropdownItem>-->
+
+<!--                        <div class="dropdown-into">-->
+<!--                            <div class="dropdown-icon">-->
+<!--                                <Icon custom="fad fa-users-crown" />-->
+<!--                            </div>-->
+<!--                            <div class="dropdown-info">-->
+<!--                                <div class="dropdown-title">Клиенты</div>-->
+<!--                                &lt;!&ndash;              <div class="dropdown-text">Разнообразный и богатый опыт начало повседневной работы по формированию позиции в значительной степени обуславливает создание новых предложений.</div>&ndash;&gt;-->
+<!--                            </div>-->
+<!--                        </div>-->
+
+<!--                    </DropdownItem>-->
+<!--                    <DropdownItem disabled>-->
+
+<!--                        <div class="dropdown-into">-->
+<!--                            <div class="dropdown-icon">-->
+<!--                                <Icon custom="fad fa-car-wash" />-->
+<!--                            </div>-->
+<!--                            <div class="dropdown-info">-->
+<!--                                <div class="dropdown-title">Парк автомобилей</div>-->
+<!--                                <div class="dropdown-text">Разнообразный и богатый опыт начало повседневной работы по формированию позиции в значительной степени обуславливает создание новых предложений.</div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+
+<!--                    </DropdownItem>-->
+<!--                    <DropdownItem>-->
+<!--                        <div class="dropdown-into">-->
+<!--                            <div class="dropdown-icon">-->
+<!--                            </div>-->
+<!--                            <div class="dropdown-info">-->
+<!--                                <div class="dropdown-title">Статистика</div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </DropdownItem>-->
+<!--                    <DropdownItem divided>-->
+
+<!--                        <div class="dropdown-into">-->
+<!--                            <div class="dropdown-icon">-->
+<!--                                <Icon custom="fad fa-sign-out red-color" />-->
+<!--                            </div>-->
+<!--                            <div class="dropdown-info">-->
+<!--                                <div class="dropdown-title red-color">Выйти</div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+
+<!--                    </DropdownItem>-->
+<!--                </DropdownMenu>-->
+<!--            </Dropdown>-->
+
             <div class="top-menu-item account-fullname">
                 <Avatar style="color: #f56a00;background-color: #fde3cf; font-size: 10px;" size="small">{{$auth.user.profile.firstname[0]}}{{$auth.user.profile.lastname[0]}}</Avatar>
                 <span class="ml-1">{{$auth.user.profile.firstname}} {{$auth.user.profile.lastname}}</span>
@@ -14,30 +82,38 @@
 
 <!--            <Search />-->
 
-            <Dropdown class="top-menu-item cursor-pointer" trigger="click" v-on:on-click="handleDropdownClick($event)">
-                <Icon custom="fad fa-user-crown" size="18"></Icon>
-                <Icon class="ml-1" custom="fad fa-chevron-down" size="10"></Icon>
+            <Dropdown placement="bottom-end" class="top-menu-item cursor-pointer" trigger="click" v-on:on-click="handleDropdownClick($event)">
+                <a>
+                    <Icon custom="fad fa-user-crown" size="18"></Icon>
+                    <Icon class="ml-1" custom="fad fa-chevron-down" size="10"></Icon>
+                </a>
+
                 <DropdownMenu slot="list">
-                    <!-- <DropdownItem name="cars">
-                      <Icon custom="fad fa-cars" />
-                      Парк
-                    </DropdownItem> -->
-                    <DropdownItem class="text-danger" name="logout" divided2>
-                        <Icon custom="fad fa-sign-out" />
-                        Выйти
+
+                    <DropdownItem name="logout" divided2>
+
+                        <div class="dropdown-into">
+                            <div class="dropdown-icon">
+                                <Icon custom="fad fa-sign-out red-color" />
+                            </div>
+                            <div class="dropdown-info">
+                                <div class="dropdown-title red-color">Выйти</div>
+                            </div>
+                        </div>
+
                     </DropdownItem>
+
+
                 </DropdownMenu>
             </Dropdown>
+
+
+
+
         </Col>
     </Row>
 
 </template>
-
-
-<!-- <i-switch class="switcher-theme" v-model="theme_switch" true-color="#ECEEEF" false-color="#141417">
-    <Icon custom="fad fa-moon" slot="open" color="rgba(0,0,0, 0.5)"></Icon>
-    <Icon custom="fad fa-sun" slot="close" color="#fff"></Icon>
-</i-switch> -->
 
 
 
@@ -75,8 +151,7 @@
 
 <style lang="scss" scoped>
     .account-partner-name {
-        font-family: 'Proxima Nova Lt';
-        font-weight: 600;
+        @include font-medium();
     }
 
     .top-menu-item {
