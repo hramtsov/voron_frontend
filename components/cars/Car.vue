@@ -6,14 +6,10 @@
     <td>
       <template v-if="type.first_car_id == car.id">
         <Tooltip content="Информация об авто" placement="top" :transfer="true">
-          <a @click="modal.car.info = true">
-            <img class="car_img_mini"
+            <img @click="$emit('carInfo')" class="car_img_mini pointer"
                  :src="`https://img.everent.me/${type.img}`"
                  alt='Изображение авто'/>
-          </a>
         </Tooltip>
-
-        <CarInfo v-model="modal.car.info" :id="car.id"></CarInfo>
 
       </template>
 
@@ -47,17 +43,18 @@
     <td v-if="$can('cars/create')">
       <template v-if="type.first_car_id == car.id">
         <Tooltip content="Добавить авто" placement="top" :transfer="true">
-          <a :href="`/devices/add/${type.id}`"><i
-            class="far fa-plus orange-color"></i></a>
+          <a class="orange-color p-1" @click="$emit('carCreate')">
+            <i class="far fa-plus"></i>
+          </a>
         </Tooltip>
+
       </template>
     </td>
 
     <td v-if="$can('cars/model_edit')">
       <template v-if="type.first_car_id == car.id">
         <Tooltip content="Настройка типа авто" placement="top" :transfer="true">
-          <a :href="`/devices/edittype/${type.id}`"><i
-            class="fad fa-cog gray-color"></i></a>
+          <a :href="`/devices/edittype/${type.id}`"><i class="fad fa-cog gray-color"></i></a>
         </Tooltip>
       </template>
     </td>
@@ -181,17 +178,17 @@
     </td>
 
 
-    <!--                                    <td>-->
+<!--                                        <td>-->
 
-    <!--                                        <Tooltip :content="car.type_ses.text" placement="top" :transfer="true" v-if="car.type_ses">-->
-    <!--                                            <div class="type-ses"><span></span></div>-->
-    <!--                                        </Tooltip>-->
+<!--                                            <Tooltip :content="car.type_ses.text" placement="top" :transfer="true" v-if="car.type_ses">-->
+<!--                                                <div class="type-ses"><span></span></div>-->
+<!--                                            </Tooltip>-->
 
-    <!--                                        <Tooltip content="Отключенный авто" placement="top" :transfer="true" v-if="car.disabled == 1">-->
-    <!--                                            <div class="type-ses"><span></span></div>-->
-    <!--                                        </Tooltip>-->
+<!--                                            <Tooltip content="Отключенный авто" placement="top" :transfer="true" v-if="car.disabled == 1">-->
+<!--                                                <div class="type-ses"><span></span></div>-->
+<!--                                            </Tooltip>-->
 
-    <!--                                    </td>-->
+<!--                                        </td>-->
 
 
     <td>
@@ -389,8 +386,7 @@
 </template>
 
 <script>
-  import CarNumber from '@/components/CarNumber'
-  import CarInfo from '@/components/CarInfo'
+  import CarNumber from '@/components/cars/Number'
 
   export default {
     name: "Car",
@@ -399,7 +395,8 @@
 
     components: {
       CarNumber,
-      CarInfo
+      // CarInfo,
+      // CarCreate
     },
     data() {
       return {
@@ -408,12 +405,23 @@
 
         modal: {
           car: {
-            info: false,
+            // info: false,
+            create: false,
           },
         },
 
       }
     },
+
+    methods: {
+      car_info(id) {
+
+        this.$emit('input', true);
+
+        console.log('asddasadsads')
+      }
+      // modal.car.info = true
+    }
 
 
   }
@@ -492,11 +500,16 @@
 
   .car_img_mini {
     background: #fff;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    border: 1px solid $gray-300;
     padding: 3px;
     width: 60px;
     height: auto;
     border-radius: 4px;
+    transition: all 0.3s ease;
+  }
+
+  .car_img_mini:hover {
+    border-color: $gray-400;
   }
 
   .cars-list i {

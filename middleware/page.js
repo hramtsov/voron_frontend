@@ -2,6 +2,9 @@ export default function ({route, store, error}) {
 
     let pages = {
         'cars-table': ['cars/section'],
+        'cars-create': ['cars/create'],
+
+
         'clients': ['clients/section'],
         'trips': ['trips/section'],
         'map': ['map/section'],

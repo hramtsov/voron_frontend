@@ -54,7 +54,8 @@ a[href], a, input[type='submit'], input[type='image'], label[for], select, butto
 /*************** Выпадающий список **************/
 
 .ivu-select-dropdown {
-  max-height: none !important;
+//  max-height: none !important;
+  box-shadow: 0 0px 30px 0 rgba(0, 0, 0, 0.12);
 }
 
 // Анимация выпадающего списка
@@ -64,14 +65,14 @@ a[href], a, input[type='submit'], input[type='image'], label[for], select, butto
 }
 
 .transition-drop-enter-active {
-  transition: all .1s linear;
+  transition: opacity .1s linear, transform .1s linear;
   opacity: 1;
 }
 .transition-drop-leave-active {
-  transition: all .1s linear;
+  transition: opacity .1s linear, transform .1s linear;
 }
 .transition-drop-enter, .transition-drop-leave-to {
-  transform: translate(0, -10px);
+  transform: translateY(-10px);
   opacity: 0;
 }
 
@@ -2157,22 +2158,89 @@ table tr td {
 
 
 /*************** Всплывающие окна **************/
+
+.ivu-modal-close {
+  top: 1.4rem;
+  right: 3rem;
+  margin-right: -7.5px;
+
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+
+  .ivu-icon-ios-close {
+    font-family: "Font Awesome 5 Pro" !important;
+    font-weight: 300 !important;
+    font-style: normal;
+    font-size: 1.2rem;
+    line-height: 1.2rem;
+    top: 0;
+
+  }
+
+  .ivu-icon-ios-close:before {
+    content: "\f00d";
+  }
+}
+
+
+
+
+
+//
+//
+//
+//
+//
+//
+
+
+
+//.vertical-center-modal{
+////  display: flex;
+////  align-items: center;
+////  justify-content: center;
+////
+////  .ivu-modal{
+////    top: 0;
+////  }
+////}
+
+
+
+//.ivu-modal-wrap {
+//  display: flex;
+//  align-items: center;
+//  justify-content: center;
+//
+//  .ivu-modal{
+//    top: 0;
+//  }
+//}
+//
+//.ivu-modal-content {
+//  max-height: 80vh;
+//}
+
+
 .ivu-modal-mask {
   -webkit-backdrop-filter: saturate(180%) blur(5px);
   backdrop-filter: saturate(180%) blur(5px);
-  background: rgba(55, 55, 55, 0.35);
+  background: rgba(55, 55, 55, 0.2);
 }
 
 .ivu-modal-content {
   box-shadow: 0 5px 30px 0 rgba(0,0,0, 0.05);
-  border-radius: 10px;
+  border-radius: 13px;
   overflow: auto;
 }
 
 .ivu-modal-header {
   border-bottom: none;
-  background: $gray-50;
+  background: $gray-100;
   display: block;
+  padding: 1.6rem 3rem 1rem;
 
   .ivu-modal-header-inner {
     font-weight: 600;
@@ -2181,4 +2249,172 @@ table tr td {
     line-height: 1.2rem;
     height: 1.2rem;
   }
+}
+
+.ivu-modal-body {
+  padding: 1.5rem 3rem 1.5rem;
+  //overflow: auto;
+}
+
+.ivu-modal-footer {
+  background: $gray-50;
+  border-top: none;
+  padding: 1.2rem 3rem;
+}
+
+
+
+/*************** Ошибки в формах **************/
+.ivu-form-item-error-tip {
+  position: static;
+}
+
+.ivu-form-label-top .ivu-form-item-label {
+  padding-bottom: 7px;
+  color: $gray-700;
+}
+
+
+/*************** Элементы формы **************/
+//.ivu-input-large {
+//  font-size: 1rem;
+//}
+
+.ivu-input-large {
+  padding: 6px 12px;
+}
+
+
+.ivu-select-large.ivu-select-single .ivu-select-selection .ivu-select-placeholder,
+.ivu-select-large.ivu-select-single .ivu-select-selection .ivu-select-selected-value,
+.ivu-select-large .ivu-select-input,
+.ivu-select-large.ivu-select-multiple .ivu-select-input {
+  padding-left: 12px;
+}
+
+
+
+
+
+
+.ivu-input-wrapper-large {
+  textarea.ivu-input {
+    min-height: 40px;
+    padding: 8px 12px;
+  }
+}
+
+.ivu-date-picker {
+  width: 100%;
+}
+
+.ivu-input,
+.ivu-select-selection {
+  border: 1px solid $gray-200;
+}
+
+.ivu-input:hover,
+.ivu-select-selection:hover,
+.ivu-select-selection-focused {
+  border-color: $gray-400;
+}
+
+.ivu-input:focus,
+.ivu-select-visible .ivu-select-selection {
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
+  border-color: $gray-400;
+}
+
+.ivu-form-item-error .ivu-input:focus {
+  box-shadow: 0 0 0 3px rgba(237, 64, 20, 0.2);
+}
+
+
+
+
+.ivu-date-picker-header {
+  background: $gray-100;
+  height: 30px;
+  line-height: 30px;
+  border: none;
+
+  margin: 10px 15px;
+  border-radius: 10px;
+
+  @include font-medium();
+
+  .ivu-picker-panel-icon-btn {
+    height: 30px;
+    line-height: 30px;
+    margin-top: 0;
+  }
+}
+
+
+
+.ivu-date-picker-cells {
+  width: 238px;
+
+  .ivu-date-picker-cells-header {
+    span {
+      line-height: 30px;
+      width: 30px;
+      height: 30px;
+      margin: 2px;
+    }
+  }
+
+  span.ivu-date-picker-cells-cell {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    margin: 2px;
+
+    em {
+      width: 100%;
+      height: 100%;
+      line-height: inherit;
+      border-radius: 6px;
+      margin: 0;
+    }
+
+    em:after {
+      top: 3px;
+      right: 3px;
+      background: $gray-400;
+    }
+  }
+
+  .ivu-date-picker-cells-cell:hover {
+    em {
+      background: $gray-100;
+    }
+  }
+
+  .ivu-date-picker-cells-focused {
+    em {
+      box-shadow: 0 0 0 1px $gray-300 inset;
+    }
+  }
+
+  .ivu-date-picker-cells-cell-selected, .ivu-date-picker-cells-cell-selected:hover {
+    em {
+      background: $gray-900;
+      color: $white;
+      box-shadow: none;
+    }
+  }
+
+}
+
+.ivu-date-picker-cells.ivu-date-picker-cells-month,
+.ivu-date-picker-cells.ivu-date-picker-cells-year {
+  span {
+    width: 55px;
+    height: 28px;
+    line-height: 28px;
+    margin: 7px 12px;
+    border-radius: 3px;
+  }
+
 }

@@ -26,7 +26,6 @@ const _14dd5a14 = () => interopDefault(import('../pages/wash.vue' /* webpackChun
 const _0a37df83 = () => interopDefault(import('../pages/roles/create.vue' /* webpackChunkName: "pages/roles/create" */))
 const _3f53627c = () => interopDefault(import('../pages/roles/edit/_id.vue' /* webpackChunkName: "pages/roles/edit/[_]id" */))
 const _3d721fda = () => interopDefault(import('../pages/cars/_table.vue' /* webpackChunkName: "pages/cars/[_]table" */))
-const _2a0c03e0 = () => interopDefault(import('../pages/cars2/_table.vue' /* webpackChunkName: "pages/cars2/[_]table" */))
 const _d2559ca6 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
 
 // TODO: remove in Nuxt 3
@@ -137,10 +136,6 @@ export const routerOptions = {
     path: "/cars/:table?",
     component: _3d721fda,
     name: "cars-table"
-  }, {
-    path: "/cars2/:table?",
-    component: _2a0c03e0,
-    name: "cars2-table"
   }, {
     path: "/",
     component: _d2559ca6,

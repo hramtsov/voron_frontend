@@ -1,6 +1,7 @@
 <template>
 
-  <Modal v-model="show" :title="title" width="1000" :footer-hide="true" :transition-names2="[]">
+  <Modal v-model="show" :title="title" width="1000" :footer-hide="true" :transition-names2="[]" class-name2="vertical-center-modal">
+<!--    -->
         <Row>
             <Col :md="14">
 
@@ -255,7 +256,9 @@
 
       methods: {
           async load() {
-              let response = await this.$axios.$get('/cars/info/' + this.id)
+              let response = await this.$axios.$get('/cars/info/' + this.id, {
+                progress: false
+              })
               this.car = response.data
               this.title = this.car.title
 

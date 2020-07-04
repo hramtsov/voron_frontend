@@ -83,7 +83,7 @@
 
 
 <script>
-    import CarNumber from '@/components/CarNumber'
+    import CarNumber from '@/components/cars/Number'
 
     export default {
         middleware: ['auth', 'page'],

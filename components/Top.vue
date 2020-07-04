@@ -1,10 +1,6 @@
 <template>
     <div class="navbar-inner">
 
-<!--        <a @click="$store.dispatch('sidebar/toggleCollapse')">-->
-<!--            <i :class="['', 'fad', (isCollapsed ? 'fa-chevron-left' : 'fa-chevron-right')]"></i>-->
-<!--        </a>-->
-
         <Search />
 
         <div class="navbar-item">
@@ -22,11 +18,8 @@
 
 
 
-            <Dropdown class="top-menu-item" trigger="click" placement="bottom-end" v-on:on-click="handleDropdownClick($event)" :transfer="false">
+            <Dropdown class="top-menu-item" trigger="click" placement="bottom-end" :transfer="false" v-on:on-click="profileMenu($event)">
                 <a>
-<!--                    <i class="fad fa-ellipsis-v"></i>-->
-<!--                  <i class="fad fa-user" style="font-size: 20px;"></i>-->
-
                   <i class="fad fa-user-circle" style="font-size: 22px;"></i>
                 </a>
                 <DropdownMenu slot="list" class="dropdown-profile">
@@ -52,7 +45,6 @@
                             </div>
                             <div class="dropdown-info">
                                 <div class="dropdown-title">Клиенты</div>
-                                <!--              <div class="dropdown-text">Разнообразный и богатый опыт начало повседневной работы по формированию позиции в значительной степени обуславливает создание новых предложений.</div>-->
                             </div>
                         </div>
 
@@ -119,28 +111,12 @@
         components: {
             Search
         },
-        // props: [
-        //     'isCollapsed'
-        // ],
-        // data () {
-        //     return {
-        //         isCollapsedI: this.isCollapsed
-        //     }
-        // },
         methods: {
-
-            // collapseSidebar() {
-            //     this.isCollapsedI = !this.isCollapsedI
-            // },
-
-            handleDropdownClick(event) {
-                if (event == 'logout') {
-                    console.log('Выходим')
+            profileMenu(item) {
+                if (item == 'logout') {
                     this.$auth.logout()
                 }
-                if (event == 'cars') {
-                    this.$route.push('/cars')
-                }
+
             },
         },
 
