@@ -1,0 +1,146 @@
+[
+  {
+    "name": "categories",
+    "path": "/categories",
+    "component": "/Users/pavel/Documents/Projects/voron.dev/frontend/pages/categories.vue",
+    "chunkName": "pages/categories"
+  },
+  {
+    "name": "check",
+    "path": "/check",
+    "component": "/Users/pavel/Documents/Projects/voron.dev/frontend/pages/check.vue",
+    "chunkName": "pages/check"
+  },
+  {
+    "name": "clients",
+    "path": "/clients",
+    "component": "/Users/pavel/Documents/Projects/voron.dev/frontend/pages/clients.vue",
+    "chunkName": "pages/clients"
+  },
+  {
+    "name": "deliveries",
+    "path": "/deliveries",
+    "component": "/Users/pavel/Documents/Projects/voron.dev/frontend/pages/deliveries.vue",
+    "chunkName": "pages/deliveries"
+  },
+  {
+    "name": "drivers",
+    "path": "/drivers",
+    "component": "/Users/pavel/Documents/Projects/voron.dev/frontend/pages/drivers.vue",
+    "chunkName": "pages/drivers"
+  },
+  {
+    "name": "fines",
+    "path": "/fines",
+    "component": "/Users/pavel/Documents/Projects/voron.dev/frontend/pages/fines.vue",
+    "chunkName": "pages/fines"
+  },
+  {
+    "name": "guide",
+    "path": "/guide",
+    "component": "/Users/pavel/Documents/Projects/voron.dev/frontend/pages/guide.vue",
+    "chunkName": "pages/guide"
+  },
+  {
+    "name": "login",
+    "path": "/login",
+    "component": "/Users/pavel/Documents/Projects/voron.dev/frontend/pages/login.vue",
+    "chunkName": "pages/login"
+  },
+  {
+    "name": "managers",
+    "path": "/managers",
+    "component": "/Users/pavel/Documents/Projects/voron.dev/frontend/pages/managers.vue",
+    "chunkName": "pages/managers"
+  },
+  {
+    "name": "managers2",
+    "path": "/managers2",
+    "component": "/Users/pavel/Documents/Projects/voron.dev/frontend/pages/managers2.vue",
+    "chunkName": "pages/managers2"
+  },
+  {
+    "name": "map",
+    "path": "/map",
+    "component": "/Users/pavel/Documents/Projects/voron.dev/frontend/pages/map.vue",
+    "chunkName": "pages/map"
+  },
+  {
+    "name": "partner",
+    "path": "/partner",
+    "component": "/Users/pavel/Documents/Projects/voron.dev/frontend/pages/partner.vue",
+    "chunkName": "pages/partner"
+  },
+  {
+    "name": "partners",
+    "path": "/partners",
+    "component": "/Users/pavel/Documents/Projects/voron.dev/frontend/pages/partners.vue",
+    "chunkName": "pages/partners"
+  },
+  {
+    "name": "registers",
+    "path": "/registers",
+    "component": "/Users/pavel/Documents/Projects/voron.dev/frontend/pages/registers.vue",
+    "chunkName": "pages/registers"
+  },
+  {
+    "name": "roles",
+    "path": "/roles",
+    "component": "/Users/pavel/Documents/Projects/voron.dev/frontend/pages/roles/index.vue",
+    "chunkName": "pages/roles/index"
+  },
+  {
+    "name": "schedule",
+    "path": "/schedule",
+    "component": "/Users/pavel/Documents/Projects/voron.dev/frontend/pages/schedule.vue",
+    "chunkName": "pages/schedule"
+  },
+  {
+    "name": "spam",
+    "path": "/spam",
+    "component": "/Users/pavel/Documents/Projects/voron.dev/frontend/pages/spam.vue",
+    "chunkName": "pages/spam"
+  },
+  {
+    "name": "statistic",
+    "path": "/statistic",
+    "component": "/Users/pavel/Documents/Projects/voron.dev/frontend/pages/statistic.vue",
+    "chunkName": "pages/statistic"
+  },
+  {
+    "name": "trips",
+    "path": "/trips",
+    "component": "/Users/pavel/Documents/Projects/voron.dev/frontend/pages/trips.vue",
+    "chunkName": "pages/trips"
+  },
+  {
+    "name": "wash",
+    "path": "/wash",
+    "component": "/Users/pavel/Documents/Projects/voron.dev/frontend/pages/wash.vue",
+    "chunkName": "pages/wash"
+  },
+  {
+    "name": "roles-create",
+    "path": "/roles/create",
+    "component": "/Users/pavel/Documents/Projects/voron.dev/frontend/pages/roles/create.vue",
+    "chunkName": "pages/roles/create"
+  },
+  {
+    "name": "roles-edit-id",
+    "path": "/roles/edit/:id?",
+    "component": "/Users/pavel/Documents/Projects/voron.dev/frontend/pages/roles/edit/_id.vue",
+    "chunkName": "pages/roles/edit/_id"
+  },
+  {
+    "name": "cars-table",
+    "path": "/cars/:table?",
+    "component": "/Users/pavel/Documents/Projects/voron.dev/frontend/pages/cars/_table.vue",
+    "chunkName": "pages/cars/_table"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "/Users/pavel/Documents/Projects/voron.dev/frontend/pages/index.vue",
+    "chunkName": "pages/index"
+  }
+]
