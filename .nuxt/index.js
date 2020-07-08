@@ -18,6 +18,7 @@ import nuxt_plugin_components_567e580a from 'nuxt_plugin_components_567e580a' //
 import nuxt_plugin_filters_2abc1387 from 'nuxt_plugin_filters_2abc1387' // Source: ../plugins/filters (mode: 'all')
 import nuxt_plugin_methods_d2c08984 from 'nuxt_plugin_methods_d2c08984' // Source: ../plugins/methods (mode: 'all')
 import nuxt_plugin_axios_2228ef02 from 'nuxt_plugin_axios_2228ef02' // Source: ../plugins/axios (mode: 'all')
+import nuxt_plugin_ymapPlugin_18bbd84a from 'nuxt_plugin_ymapPlugin_18bbd84a' // Source: ../plugins/ymapPlugin (mode: 'all')
 import nuxt_plugin_plugin_826f9666 from 'nuxt_plugin_plugin_826f9666' // Source: ./auth/plugin.js (mode: 'all')
 
 // Component: <ClientOnly>
@@ -212,6 +213,10 @@ async function createApp(ssrContext, config = {}) {
 
   if (typeof nuxt_plugin_axios_2228ef02 === 'function') {
     await nuxt_plugin_axios_2228ef02(app.context, inject)
+  }
+
+  if (typeof nuxt_plugin_ymapPlugin_18bbd84a === 'function') {
+    await nuxt_plugin_ymapPlugin_18bbd84a(app.context, inject)
   }
 
   if (typeof nuxt_plugin_plugin_826f9666 === 'function') {

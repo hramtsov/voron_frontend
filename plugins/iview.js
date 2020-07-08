@@ -3,12 +3,13 @@ import iView from 'view-design' // 'iview'
 import locale from 'view-design/dist/locale/ru-RU' // 'iview/dist/locale/en-US' // Change locale, check node_modules/iview/dist/locale
 
 Vue.use(iView, {
-  locale,
-  size: 'large',
+	locale,
+	size: 'large',
+	// transfer: true,
 
-  datePicker: {
-    customIcon: 'fal fa-calendar',
-    iconSize: 14
-  }
+	datePicker: {
+		customIcon: 'fal fa-calendar',
+		iconSize: 14
+	}
 
 })

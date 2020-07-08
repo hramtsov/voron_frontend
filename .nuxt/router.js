@@ -13,7 +13,7 @@ const _4b331ed7 = () => interopDefault(import('../pages/guide.vue' /* webpackChu
 const _607cd4c4 = () => interopDefault(import('../pages/login.vue' /* webpackChunkName: "pages/login" */))
 const _65dc084a = () => interopDefault(import('../pages/managers.vue' /* webpackChunkName: "pages/managers" */))
 const _5575ae32 = () => interopDefault(import('../pages/managers2.vue' /* webpackChunkName: "pages/managers2" */))
-const _63074df7 = () => interopDefault(import('../pages/map.vue' /* webpackChunkName: "pages/map" */))
+const _1f893f3a = () => interopDefault(import('../pages/map/index.vue' /* webpackChunkName: "pages/map/index" */))
 const _5f4935e3 = () => interopDefault(import('../pages/partner.vue' /* webpackChunkName: "pages/partner" */))
 const _e4edb0c0 = () => interopDefault(import('../pages/partners.vue' /* webpackChunkName: "pages/partners" */))
 const _ef8b12ea = () => interopDefault(import('../pages/registers.vue' /* webpackChunkName: "pages/registers" */))
@@ -23,6 +23,7 @@ const _706559be = () => interopDefault(import('../pages/spam.vue' /* webpackChun
 const _7ab68caa = () => interopDefault(import('../pages/statistic.vue' /* webpackChunkName: "pages/statistic" */))
 const _9f6ea86e = () => interopDefault(import('../pages/trips.vue' /* webpackChunkName: "pages/trips" */))
 const _14dd5a14 = () => interopDefault(import('../pages/wash.vue' /* webpackChunkName: "pages/wash" */))
+const _7b2b2333 = () => interopDefault(import('../pages/map/track.vue' /* webpackChunkName: "pages/map/track" */))
 const _0a37df83 = () => interopDefault(import('../pages/roles/create.vue' /* webpackChunkName: "pages/roles/create" */))
 const _3f53627c = () => interopDefault(import('../pages/roles/edit/_id.vue' /* webpackChunkName: "pages/roles/edit/[_]id" */))
 const _3d721fda = () => interopDefault(import('../pages/cars/_table.vue' /* webpackChunkName: "pages/cars/[_]table" */))
@@ -86,7 +87,7 @@ export const routerOptions = {
     name: "managers2"
   }, {
     path: "/map",
-    component: _63074df7,
+    component: _1f893f3a,
     name: "map"
   }, {
     path: "/partner",
@@ -124,6 +125,10 @@ export const routerOptions = {
     path: "/wash",
     component: _14dd5a14,
     name: "wash"
+  }, {
+    path: "/map/track",
+    component: _7b2b2333,
+    name: "map-track"
   }, {
     path: "/roles/create",
     component: _0a37df83,

@@ -1,14 +1,22 @@
 <template>
    <div>
-      <PageHeader title="Парк автомобилей" icon="fad fa-cars"></PageHeader>
+      <PageHeader title="Парк автомобилей" icon="fad fa-cars">
+         <template slot="buttons">
+            <Button type="primary" @click="car_form(0, 'create')">Новый автомобиль</Button>
+         </template>
+      </PageHeader>
 
       <CarInfo v-model="modal.car.info" />
-      <CarCreate v-model="modal.car.create" @carsRefresh="load" />
+      <CarForm v-model="modal.car.form.model" :action="modal.car.form.action" @carsRefresh="load" />
+      <Delivery v-model="modal.car.delivery" @carsRefresh="load" />
+      <Problems v-model="modal.car.problems" @carsRefresh="load" />
 
       <div class="card-box">
          <div class="tabs-cars">
-            <template v-for="(category, index) in tables" v-if="category.count_cars > 0">
+            <template v-for="(category, index) in tables">
                <nuxt-link
+                  v-if="category.count_cars > 0"
+                  :key="`cars-${index}`"
                   :to="(index == 'connected' ? '/cars' : `/cars/${index}`)"
                   :class="[( index == $route.params.table ? 'active' : '' )]"
                >
@@ -24,17 +32,21 @@
             <table class="table cars-list table-sm table-borderless">
                <tbody>
                   <template v-for="(category, category_id) in table.categories">
-                     <tr>
+                     <tr :key="category_id">
                         <td class="car_type_title" colspan="30">{{ category.title }}</td>
                      </tr>
 
                      <template v-for="(type, type_id) in category.types">
                         <template v-for="(car, car_id) in type.cars">
                            <Car
+                              :key="car_id"
                               :type="type"
                               :car="car"
                               @carInfo="car_info(car_id)"
-                              @carCreate="car_create(type_id)"
+                              @carCreate="car_form(type_id, 'create')"
+                              @carDelivery="car_delivery(car_id)"
+                              @carProblems="car_problems(car_id)"
+                              @carsRefresh="load"
                            />
                         </template>
                         <!-- Авто -->
@@ -54,14 +66,18 @@
 <script>
 import Car from "@/components/cars/Car";
 import CarInfo from "@/components/cars/Info2";
-import CarCreate from "@/components/cars/Create";
+import CarForm from "@/components/cars/Form";
+import Delivery from "@/components/cars/Delivery";
+import Problems from "@/components/cars/Problems";
 
 export default {
    middleware: ["auth", "page"],
    components: {
       Car,
       CarInfo,
-      CarCreate
+      CarForm,
+      Delivery,
+      Problems
    },
    validate({ params }) {
       if (params.table === undefined) {
@@ -94,7 +110,12 @@ export default {
          modal: {
             car: {
                info: null,
-               create: null
+               form: {
+                  model: null,
+                  action: "create"
+               },
+               delivery: null,
+               problems: null
             }
          }
       };
@@ -135,7 +156,7 @@ export default {
 
       async load() {
          try {
-            console.log(this.$route.params.table);
+            // console.log(this.$route.params.table);
             let response = await this.$axios.$get(
                "/cars/getlist?active=" + this.$route.params.table,
                {
@@ -155,8 +176,15 @@ export default {
       car_info(id) {
          this.modal.car.info = id;
       },
-      car_create(model) {
-         this.modal.car.create = model;
+      car_form(model, action) {
+         this.modal.car.form.model = model;
+         this.modal.car.form.action = action;
+      },
+      car_delivery(id) {
+         this.modal.car.delivery = id;
+      },
+      car_problems(id) {
+         this.modal.car.problems = id;
       }
    }
 };
@@ -264,12 +292,6 @@ table tr td:last-child {
    border-radius: 0 10px 10px 0;
 }
 
-table tr td,
-table.table-borderless tr td {
-   /*border-bottom: 3px solid #fff !important;*/
-   /*border-top: 3px solid #fff !important;*/
-}
-
 table {
    border-collapse: separate;
    border-spacing: 0 6px;
@@ -321,7 +343,7 @@ table {
             min-width: 20px;
             display: inline-block;
             text-align: center;
-            lien-height: 11px;
+            line-height: 11px;
          }
       }
    }
