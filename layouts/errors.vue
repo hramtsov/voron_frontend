@@ -1,5 +1,5 @@
 <template>
-  <div class="min-vh-100 flex-row d-flex align-items-center justify-content-center">
-    <nuxt />
-  </div>
+   <Row type="flex" justify="center" align="middle" class="min-vh-100">
+      <nuxt />
+   </Row>
 </template>

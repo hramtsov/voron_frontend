@@ -169,6 +169,10 @@ button,
 	color: rgba(90, 190, 57, 1);
 }
 
+.blue-color {
+	color: $blue-600;
+}
+
 /*************** Всплывающие подсказки **************/
 .ivu-tooltip-inner {
 	min-height: auto;
@@ -191,6 +195,16 @@ button,
 
 .ivu-tooltip-popper[x-placement^="right"] .ivu-tooltip-arrow {
 	border-right-color: rgba(0, 0, 0, 0.85);
+}
+
+/////
+
+.ivu-poptip-popper {
+	max-width: 340px;
+}
+
+.ivu-poptip-inner {
+	white-space: normal;
 }
 
 /*************** Таблицы **************/
@@ -252,6 +266,33 @@ table tbody .ivu-table-cell {
 table thead .ivu-table-cell {
 	padding-left: 12px;
 	padding-right: 12px;
+}
+
+.ivu-table-fixed::before,
+.ivu-table-fixed-right::before {
+	display: none;
+}
+
+.ivu-table-fixed,
+.ivu-table-fixed-right {
+	box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.05); // 2px 0 6px -2px rgba(0, 0, 0, 0.2);
+}
+
+th > .ivu-table-cell {
+	word-break: normal !important;
+}
+
+table thead .ivu-table-cell {
+	line-height: 1.1rem;
+}
+
+table thead .ivu-table-cell {
+	padding-left: 4px;
+	padding-right: 4px;
+}
+
+.ivu-table-summary {
+	border-top: none;
 }
 
 ///////
@@ -339,7 +380,146 @@ table tr td {
 	//font-size: 0.85rem;
 }
 
+/*************** Типографика, выравнивание **************/
+.text-left {
+	text-align: left !important;
+}
+
+.text-right {
+	text-align: right !important;
+}
+
+.text-center {
+	text-align: center !important;
+}
+
+@media (min-width: 576px) {
+	.text-sm-left {
+		text-align: left !important;
+	}
+	.text-sm-right {
+		text-align: right !important;
+	}
+	.text-sm-center {
+		text-align: center !important;
+	}
+}
+
+@media (min-width: 768px) {
+	.text-md-left {
+		text-align: left !important;
+	}
+	.text-md-right {
+		text-align: right !important;
+	}
+	.text-md-center {
+		text-align: center !important;
+	}
+}
+
+@media (min-width: 992px) {
+	.text-lg-left {
+		text-align: left !important;
+	}
+	.text-lg-right {
+		text-align: right !important;
+	}
+	.text-lg-center {
+		text-align: center !important;
+	}
+}
+
+@media (min-width: 1200px) {
+	.text-xl-left {
+		text-align: left !important;
+	}
+	.text-xl-right {
+		text-align: right !important;
+	}
+	.text-xl-center {
+		text-align: center !important;
+	}
+}
+
+.text-lowercase {
+	text-transform: lowercase !important;
+}
+
+.text-uppercase {
+	text-transform: uppercase !important;
+}
+
+.text-capitalize {
+	text-transform: capitalize !important;
+}
+
+/*************** Ширина, высота **************/
+.w-25 {
+	width: 25% !important;
+}
+
+.w-50 {
+	width: 50% !important;
+}
+
+.w-75 {
+	width: 75% !important;
+}
+
+.w-100 {
+	width: 100% !important;
+}
+
+.w-auto {
+	width: auto !important;
+}
+
+.h-25 {
+	height: 25% !important;
+}
+
+.h-50 {
+	height: 50% !important;
+}
+
+.h-75 {
+	height: 75% !important;
+}
+
+.h-100 {
+	height: 100% !important;
+}
+
+.h-auto {
+	height: auto !important;
+}
+
+.mw-100 {
+	max-width: 100% !important;
+}
+
+.mh-100 {
+	max-height: 100% !important;
+}
+
+.min-vw-100 {
+	min-width: 100vw !important;
+}
+
+.min-vh-100 {
+	min-height: 100vh !important;
+}
+
+.vw-100 {
+	width: 100vw !important;
+}
+
+.vh-100 {
+	height: 100vh !important;
+}
+
 /*************** Отступы **************/
+
 .m-0 {
 	margin: 0 !important;
 }
@@ -2226,7 +2406,7 @@ table tr td {
 .ivu-modal-mask {
 	// -webkit-backdrop-filter: saturate(180%) blur(5px);
 	// backdrop-filter: saturate(180%) blur(5px);
-	background: rgba(55, 55, 55, 0.5);
+	background: rgba(55, 55, 55, 0.7);
 }
 
 .ivu-modal-content {
@@ -2276,8 +2456,40 @@ table tr td {
 //  font-size: 1rem;
 //}
 
+// Чекбоксы
+.ivu-divider-horizontal.ivu-divider-with-text-center,
+.ivu-divider-horizontal.ivu-divider-with-text-left,
+.ivu-divider-horizontal.ivu-divider-with-text-right {
+	@include font-medium();
+}
+
+.ivu-checkbox-group-item {
+	display: flex;
+}
+
+.ivu-checkbox {
+	flex: 0 1 auto;
+	// line-height: 1.5rem;
+}
+
+.label-checkbox {
+	flex: 0 1 auto;
+	line-height: 1.2rem;
+	padding-left: 10px;
+}
+/////
+
 .ivu-input-large {
 	padding: 6px 12px;
+}
+
+.ivu-input-prefix,
+.ivu-input-suffix {
+	width: 38px;
+}
+
+.ivu-input-with-prefix {
+	padding-left: 38px;
 }
 
 .ivu-cascader-label {
@@ -2414,4 +2626,137 @@ table tr td {
 
 .ivu-tabs-bar {
 	margin-bottom: 2rem;
+}
+
+/*************** Слайдер (ползунок) **************/
+.ivu-slider-marks-item {
+	min-width: 70px;
+	max-width: 70px;
+	text-align: center;
+	color: $gray-500;
+}
+
+/*************** Права доступа **************/
+.permission-description {
+	display: block;
+	font-size: 0.85rem;
+	color: $gray-800;
+}
+
+.permission-slug {
+	display: block;
+	font-size: 0.85rem;
+	color: $gray-500;
+}
+
+/*************** Списки данных **************/
+.list-label {
+	// @include font-medium();
+	color: $gray-500;
+}
+
+.list-value {
+	color: $gray-900;
+}
+
+/*************** Анимация **************/
+.fade-enter-active,
+.fade-leave-active {
+	transition: opacity 0.5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active до версии 2.1.8 */ {
+	opacity: 0;
+}
+
+table.cars-list tr td:first-child {
+	padding-left: 1.5rem;
+}
+
+table.cars-list tr td:last-child {
+	padding-right: 1.5rem;
+}
+
+/*************** Графики **************/
+// @import "https://code.highcharts.com/css/highcharts.css";
+
+.highcharts-data-label {
+	@include font-lite();
+	font-size: 2rem;
+
+	* {
+		font-size: 12px;
+		@include font-regular();
+		font-weight: 400 !important;
+	}
+}
+// .highcharts-color-0 {
+// 	fill: #f45b5b;
+// 	stroke: #f45b5b;
+// }
+
+/* Titles */
+.highcharts-title {
+	@include font-medium();
+	font-size: 1.3rem !important;
+}
+
+.highcharts-subtitle {
+	@include font-regular();
+	font-size: 1rem !important;
+
+	* {
+		fill: $gray-500;
+	}
+
+	.highcharts-subtitle-hl {
+		fill: $gray-800;
+	}
+}
+
+.highcharts-axis-labels {
+	@include font-regular();
+
+	// * {
+	// 	font-size: 1em !important;
+	// }
+}
+
+.highcharts-data-label {
+	* {
+		fill: $gray-400;
+	}
+
+	.black-fill {
+		fill: $gray-900;
+	}
+
+	.orange-fill {
+		// , .rub-icon
+		fill: $orange-800;
+	}
+}
+
+.highcharts-label-car_model {
+	// fill: $gray-500;
+}
+
+.highcharts-label-car_title {
+	fill: $gray-800;
+}
+
+.highcharts-label-car_number {
+	// 	fill: $gray-400;
+}
+
+.highcharts-label-car_profit {
+	fill: $orange-800 !important;
+}
+
+/*************** Уведомления **************/
+.ivu-notice-title {
+	@include font-medium();
+}
+.ivu-notice-desc {
+	text-align: left;
+	@include font-lite();
 }

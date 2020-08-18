@@ -1,5 +1,7 @@
 <template>
-   <tr :class="['car-' + car.type_ses.name, (car.disabled == 1 ? 'car-disabled' : '')]">
+   <tr
+      :class="['car-' + car.type_ses.name, (car.disabled == 1 ? 'car-disabled' : ''), ($store.getters['cars/getList'].includes(car.id) ? 'car-active' : '')]"
+   >
       <td>
          <template v-if="type.first_car_id == car.id">
             <Tooltip content="Информация об авто" placement="top" :transfer="true">
@@ -59,7 +61,12 @@
       </td>
 
       <td>
-         <CarNumber :number="car.number" />
+         <a
+            @click="$store.dispatch('cars/changeSelected', {id: car.id, active: !$store.getters['cars/getList'].includes(car.id)})"
+         >
+            <!-- @click="car_choose" -->
+            <CarNumber :number="car.number" />
+         </a>
       </td>
 
       <td v-if="$can('cars/gallery_all')">
@@ -192,8 +199,9 @@
                v-if="car.status == 1 && (($can('clients/info_client') && car.ses.isService == 0) || ($can('clients/info_service') && car.ses.isService == 1) || ($can('clients/info_owner') && car.ses.isService == 2))"
                :data-orientation="car.ses.client.selfie_turn"
                class="car_status car_status_big car_status_black"
-               :style="`background-image: url(/give/resizeimage?fn=${car.ses.client.selfie})`"
+               style="тут"
             ></div>
+            <!-- :style="`background-image: url(/give/resizeimage?fn=${car.ses.client.selfie})`" -->
             <div v-else class="car_status car_status_red"></div>
          </Tooltip>
 
@@ -231,6 +239,7 @@
             v-if="['1','12'].includes(car.status) && (($can('clients/info_client') && car.ses.isService == 0) || ($can('clients/info_service') && car.ses.isService == 1) || ($can('clients/info_owner') && car.ses.isService == 2))"
          >
             <Button
+               @click="$emit('clientInfo', car.ses.client.id, car.ses.id)"
                class="ivu-btn-gray"
                shape="circle"
                :data-remote="`/give/infoclient/${car.ses.client.id}?mode=park&ses=${car.ses.id}`"
@@ -348,13 +357,13 @@
       <td>
          <template v-if="$can('trips/compensation_create') && ['1','12'].includes(car.status)">
             <Tooltip content="Добавить компенсацию" placement="top" :transfer="true">
-               <a data-target="#ModalDevice" :data-remote="`/give/addcompensation/${car.ses.id}`">
+               <a @click="$emit('tripAddCompensation', car.ses.id)">
                   <Icon custom="far fa-plus orange-color" />
                </a>
             </Tooltip>
 
             <Tooltip content="Компенсации" placement="top" :transfer="true">
-               <a :data-remote="`/give/aboutcompensation/${car.ses.id}`">
+               <a @click="$emit('tripCompensations', car.ses.id)">
                   <span>
                      <b>{{ car.ses.compensation }}</b>
                   </span>
@@ -423,7 +432,11 @@
             >
                <!--                      car.status == 0 ? 'checked' : ''  -->
                <!--                      /give/NotAvailable/${car.id}-->
-               <i-switch size="small" />
+               <i-switch
+                  size="small"
+                  :value="car.status == 0 ? true : false"
+                  @on-change="available"
+               />
             </Tooltip>
 
             <Tooltip placement="top" :transfer="true" v-else>
@@ -463,13 +476,15 @@
                :transfer="true"
                v-if="car.ses.stop == 0"
             >
-               <!--                      /give/lockondrive/${car.ses.id}?place=cars-->
-               <i class="fad fa-unlock-alt"></i>
+               <a @click="$emit('tripBlock', car.ses.id, 'on')" class="p-1">
+                  <i class="fad fa-unlock-alt"></i>
+               </a>
             </Tooltip>
 
             <Tooltip content="Снять блокировку" placement="top" :transfer="true" v-else>
-               <!--                      /give/lockoffdrive/${car.ses.id}?place=cars -->
-               <Icon custom="fad fa-lock" />
+               <a @click="$emit('tripBlock', car.ses.id, 'off')" class="p-1">
+                  <Icon custom="fad fa-lock" />
+               </a>
             </Tooltip>
          </template>
       </td>
@@ -485,7 +500,7 @@ export default {
    props: ["car", "type"],
 
    components: {
-      CarNumber
+      CarNumber,
    },
    data() {
       return {
@@ -495,17 +510,13 @@ export default {
          modal: {
             car: {
                // info: false,
-               create: false
-            }
-         }
+               create: false,
+            },
+         },
       };
    },
 
    methods: {
-      car_info(id) {
-         this.$emit("input", true);
-      },
-
       async deliveryOn() {
          let notify_title =
             this.car.devAllowDelivery == 1
@@ -514,23 +525,30 @@ export default {
 
          try {
             await this.$axios.$post("/cars/delivery_toggle/" + this.car.id, {
-               progress: true
+               progress: true,
             });
 
             this.$Notice.success({
                title: notify_title,
-               desc: "Успешно"
+               desc: "Успешно",
             });
 
             this.$emit("carsRefresh");
          } catch (error) {
             this.$Notice.error({
                title: notify_title,
-               desc: error.response.data.message
+               desc: error.response.data.message,
             });
          }
-      }
-   }
+      },
+
+      available(val) {
+         // console.log(val);
+
+         let action = this.car.status == 0 ? "off" : "on";
+         this.$emit("carAvailable", this.car.ses.id, action);
+      },
+   },
 };
 </script>
 
@@ -628,22 +646,13 @@ export default {
 }
 
 table tr td:first-child {
-   border-radius: 10px 0 0 10px;
+   // border-radius: 10px 0 0 10px;
+   border-radius: 0;
 }
 
 table tr td:last-child {
-   border-radius: 0 10px 10px 0;
-}
-
-table tr td,
-table.table-borderless tr td {
-   /*border-bottom: 3px solid #fff !important;*/
-   /*border-top: 3px solid #fff !important;*/
-}
-
-table {
-   border-collapse: separate;
-   border-spacing: 0 6px;
+   // border-radius: 0 10px 10px 0;
+   border-radius: 0;
 }
 
 .type-ses {

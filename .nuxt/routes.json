@@ -3,175 +3,222 @@
     "name": "categories",
     "path": "/categories",
     "component": "/Users/pavel/Documents/Projects/voron.dev/frontend/pages/categories.vue",
-    "chunkName": "pages/categories",
-    "_name": "_d258e55e"
+    "chunkName": "pages/categories"
   },
   {
     "name": "check",
     "path": "/check",
     "component": "/Users/pavel/Documents/Projects/voron.dev/frontend/pages/check.vue",
-    "chunkName": "pages/check",
-    "_name": "_428e3a3a"
+    "chunkName": "pages/check"
   },
   {
     "name": "clients",
     "path": "/clients",
     "component": "/Users/pavel/Documents/Projects/voron.dev/frontend/pages/clients.vue",
-    "chunkName": "pages/clients",
-    "_name": "_1be13f23"
+    "chunkName": "pages/clients"
   },
   {
     "name": "deliveries",
     "path": "/deliveries",
     "component": "/Users/pavel/Documents/Projects/voron.dev/frontend/pages/deliveries.vue",
-    "chunkName": "pages/deliveries",
-    "_name": "_63374872"
+    "chunkName": "pages/deliveries"
   },
   {
     "name": "drivers",
     "path": "/drivers",
     "component": "/Users/pavel/Documents/Projects/voron.dev/frontend/pages/drivers.vue",
-    "chunkName": "pages/drivers",
-    "_name": "_70f0cce6"
+    "chunkName": "pages/drivers"
   },
   {
     "name": "fines",
     "path": "/fines",
     "component": "/Users/pavel/Documents/Projects/voron.dev/frontend/pages/fines.vue",
-    "chunkName": "pages/fines",
-    "_name": "_394c4158"
+    "chunkName": "pages/fines"
   },
   {
     "name": "guide",
     "path": "/guide",
     "component": "/Users/pavel/Documents/Projects/voron.dev/frontend/pages/guide.vue",
-    "chunkName": "pages/guide",
-    "_name": "_4b331ed7"
+    "chunkName": "pages/guide"
   },
   {
     "name": "login",
     "path": "/login",
     "component": "/Users/pavel/Documents/Projects/voron.dev/frontend/pages/login.vue",
-    "chunkName": "pages/login",
-    "_name": "_607cd4c4"
+    "chunkName": "pages/login"
   },
   {
     "name": "managers",
     "path": "/managers",
     "component": "/Users/pavel/Documents/Projects/voron.dev/frontend/pages/managers.vue",
-    "chunkName": "pages/managers",
-    "_name": "_65dc084a"
+    "chunkName": "pages/managers"
   },
   {
     "name": "managers2",
     "path": "/managers2",
     "component": "/Users/pavel/Documents/Projects/voron.dev/frontend/pages/managers2.vue",
-    "chunkName": "pages/managers2",
-    "_name": "_5575ae32"
+    "chunkName": "pages/managers2"
   },
   {
     "name": "map",
     "path": "/map",
     "component": "/Users/pavel/Documents/Projects/voron.dev/frontend/pages/map/index.vue",
-    "chunkName": "pages/map/index",
-    "_name": "_1f893f3a"
+    "chunkName": "pages/map/index"
   },
   {
     "name": "partner",
     "path": "/partner",
     "component": "/Users/pavel/Documents/Projects/voron.dev/frontend/pages/partner.vue",
-    "chunkName": "pages/partner",
-    "_name": "_5f4935e3"
+    "chunkName": "pages/partner"
   },
   {
     "name": "partners",
     "path": "/partners",
     "component": "/Users/pavel/Documents/Projects/voron.dev/frontend/pages/partners.vue",
-    "chunkName": "pages/partners",
-    "_name": "_e4edb0c0"
+    "chunkName": "pages/partners"
   },
   {
     "name": "registers",
     "path": "/registers",
     "component": "/Users/pavel/Documents/Projects/voron.dev/frontend/pages/registers.vue",
-    "chunkName": "pages/registers",
-    "_name": "_ef8b12ea"
+    "chunkName": "pages/registers"
   },
   {
     "name": "roles",
     "path": "/roles",
     "component": "/Users/pavel/Documents/Projects/voron.dev/frontend/pages/roles/index.vue",
-    "chunkName": "pages/roles/index",
-    "_name": "_43f782ca"
+    "chunkName": "pages/roles/index"
   },
   {
     "name": "schedule",
     "path": "/schedule",
     "component": "/Users/pavel/Documents/Projects/voron.dev/frontend/pages/schedule.vue",
-    "chunkName": "pages/schedule",
-    "_name": "_6fc7b0e8"
+    "chunkName": "pages/schedule"
   },
   {
     "name": "spam",
     "path": "/spam",
     "component": "/Users/pavel/Documents/Projects/voron.dev/frontend/pages/spam.vue",
-    "chunkName": "pages/spam",
-    "_name": "_706559be"
+    "chunkName": "pages/spam"
   },
   {
-    "name": "statistic",
-    "path": "/statistic",
-    "component": "/Users/pavel/Documents/Projects/voron.dev/frontend/pages/statistic.vue",
-    "chunkName": "pages/statistic",
-    "_name": "_7ab68caa"
+    "name": "statistics",
+    "path": "/statistics",
+    "component": "/Users/pavel/Documents/Projects/voron.dev/frontend/pages/statistics/index.vue",
+    "chunkName": "pages/statistics/index"
   },
   {
     "name": "trips",
     "path": "/trips",
     "component": "/Users/pavel/Documents/Projects/voron.dev/frontend/pages/trips.vue",
-    "chunkName": "pages/trips",
-    "_name": "_9f6ea86e"
+    "chunkName": "pages/trips"
   },
   {
     "name": "wash",
     "path": "/wash",
     "component": "/Users/pavel/Documents/Projects/voron.dev/frontend/pages/wash.vue",
-    "chunkName": "pages/wash",
-    "_name": "_14dd5a14"
+    "chunkName": "pages/wash"
   },
   {
     "name": "map-track",
     "path": "/map/track",
     "component": "/Users/pavel/Documents/Projects/voron.dev/frontend/pages/map/track.vue",
-    "chunkName": "pages/map/track",
-    "_name": "_7b2b2333"
+    "chunkName": "pages/map/track"
   },
   {
     "name": "roles-create",
     "path": "/roles/create",
     "component": "/Users/pavel/Documents/Projects/voron.dev/frontend/pages/roles/create.vue",
-    "chunkName": "pages/roles/create",
-    "_name": "_0a37df83"
+    "chunkName": "pages/roles/create"
+  },
+  {
+    "name": "statistics-client",
+    "path": "/statistics/client",
+    "component": "/Users/pavel/Documents/Projects/voron.dev/frontend/pages/statistics/client/index.vue",
+    "chunkName": "pages/statistics/client/index"
+  },
+  {
+    "name": "statistics-day",
+    "path": "/statistics/day",
+    "component": "/Users/pavel/Documents/Projects/voron.dev/frontend/pages/statistics/day/index.vue",
+    "chunkName": "pages/statistics/day/index"
+  },
+  {
+    "name": "statistics-month",
+    "path": "/statistics/month",
+    "component": "/Users/pavel/Documents/Projects/voron.dev/frontend/pages/statistics/month/index.vue",
+    "chunkName": "pages/statistics/month/index"
+  },
+  {
+    "name": "statistics-trip",
+    "path": "/statistics/trip",
+    "component": "/Users/pavel/Documents/Projects/voron.dev/frontend/pages/statistics/trip/index.vue",
+    "chunkName": "pages/statistics/trip/index"
+  },
+  {
+    "name": "statistics-client-pipeline",
+    "path": "/statistics/client/pipeline",
+    "component": "/Users/pavel/Documents/Projects/voron.dev/frontend/pages/statistics/client/pipeline.vue",
+    "chunkName": "pages/statistics/client/pipeline"
+  },
+  {
+    "name": "statistics-client-regular",
+    "path": "/statistics/client/regular",
+    "component": "/Users/pavel/Documents/Projects/voron.dev/frontend/pages/statistics/client/regular.vue",
+    "chunkName": "pages/statistics/client/regular"
+  },
+  {
+    "name": "statistics-day-costs",
+    "path": "/statistics/day/costs",
+    "component": "/Users/pavel/Documents/Projects/voron.dev/frontend/pages/statistics/day/costs.vue",
+    "chunkName": "pages/statistics/day/costs"
+  },
+  {
+    "name": "statistics-month-costs",
+    "path": "/statistics/month/costs",
+    "component": "/Users/pavel/Documents/Projects/voron.dev/frontend/pages/statistics/month/costs.vue",
+    "chunkName": "pages/statistics/month/costs"
+  },
+  {
+    "name": "statistics-month-fines",
+    "path": "/statistics/month/fines",
+    "component": "/Users/pavel/Documents/Projects/voron.dev/frontend/pages/statistics/month/fines.vue",
+    "chunkName": "pages/statistics/month/fines"
+  },
+  {
+    "name": "statistics-month-models",
+    "path": "/statistics/month/models",
+    "component": "/Users/pavel/Documents/Projects/voron.dev/frontend/pages/statistics/month/models.vue",
+    "chunkName": "pages/statistics/month/models"
+  },
+  {
+    "name": "statistics-month-revenue",
+    "path": "/statistics/month/revenue",
+    "component": "/Users/pavel/Documents/Projects/voron.dev/frontend/pages/statistics/month/revenue.vue",
+    "chunkName": "pages/statistics/month/revenue"
+  },
+  {
+    "name": "statistics-trip-costs",
+    "path": "/statistics/trip/costs",
+    "component": "/Users/pavel/Documents/Projects/voron.dev/frontend/pages/statistics/trip/costs.vue",
+    "chunkName": "pages/statistics/trip/costs"
   },
   {
     "name": "roles-edit-id",
     "path": "/roles/edit/:id?",
     "component": "/Users/pavel/Documents/Projects/voron.dev/frontend/pages/roles/edit/_id.vue",
-    "chunkName": "pages/roles/edit/_id",
-    "_name": "_3f53627c"
+    "chunkName": "pages/roles/edit/_id"
   },
   {
     "name": "cars-table",
     "path": "/cars/:table?",
     "component": "/Users/pavel/Documents/Projects/voron.dev/frontend/pages/cars/_table.vue",
-    "chunkName": "pages/cars/_table",
-    "_name": "_3d721fda"
+    "chunkName": "pages/cars/_table"
   },
   {
     "name": "index",
     "path": "/",
     "component": "/Users/pavel/Documents/Projects/voron.dev/frontend/pages/index.vue",
-    "chunkName": "pages/index",
-    "_name": "_d2559ca6"
+    "chunkName": "pages/index"
   }
 ]

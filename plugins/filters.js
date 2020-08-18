@@ -6,6 +6,40 @@ moment.locale('ru')
 
 
 
+
+
+
+// Округление в меньшую сторону
+Vue.filter('floor', function (value, digits = 0) {
+	// digits = digits + 1;
+	var pow = Math.pow(10, digits);
+	var rounded = Math.floor(value * pow) / pow;
+	return rounded;
+})
+
+// Округление
+Vue.filter('round', function (value, digits = 0) {
+	var pow = Math.pow(10, digits);
+	var rounded = Math.round(value * pow) / pow;
+	return rounded;
+})
+
+// Округление в большую сторону
+Vue.filter('ceil', function (value, digits = 0) {
+	var pow = Math.pow(10, digits);
+	var rounded = Math.ceil(value * pow) / pow;
+	return rounded;
+})
+
+
+// Vue.filter('round', function (value, digits = 0) {
+// 	var rounded = parseFloat(value.toFixed(digits));
+// 	return rounded;
+// })
+
+
+
+
 // Склонение числительных
 Vue.filter('declOfNum', function (value, array, show_value = true) {
 	console.log(value)
@@ -38,6 +72,29 @@ Vue.filter('number', function (value) {
 		return;
 	}
 })
+
+
+// Серия и номер паспорта
+Vue.filter('passport_number', function (value) {
+	if (typeof value !== 'undefined') {
+		return value;
+		// return value.toString().replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ')
+	} else {
+		return;
+	}
+})
+
+
+// Номер водительских прав
+Vue.filter('driver_number', function (value) {
+	if (typeof value !== 'undefined') {
+		return value;
+		// return value.toString().replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ')
+	} else {
+		return;
+	}
+})
+
 
 
 // Время

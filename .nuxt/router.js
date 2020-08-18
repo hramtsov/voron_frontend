@@ -20,11 +20,23 @@ const _ef8b12ea = () => interopDefault(import('../pages/registers.vue' /* webpac
 const _43f782ca = () => interopDefault(import('../pages/roles/index.vue' /* webpackChunkName: "pages/roles/index" */))
 const _6fc7b0e8 = () => interopDefault(import('../pages/schedule.vue' /* webpackChunkName: "pages/schedule" */))
 const _706559be = () => interopDefault(import('../pages/spam.vue' /* webpackChunkName: "pages/spam" */))
-const _7ab68caa = () => interopDefault(import('../pages/statistic.vue' /* webpackChunkName: "pages/statistic" */))
+const _4ba7a15b = () => interopDefault(import('../pages/statistics/index.vue' /* webpackChunkName: "pages/statistics/index" */))
 const _9f6ea86e = () => interopDefault(import('../pages/trips.vue' /* webpackChunkName: "pages/trips" */))
 const _14dd5a14 = () => interopDefault(import('../pages/wash.vue' /* webpackChunkName: "pages/wash" */))
 const _7b2b2333 = () => interopDefault(import('../pages/map/track.vue' /* webpackChunkName: "pages/map/track" */))
 const _0a37df83 = () => interopDefault(import('../pages/roles/create.vue' /* webpackChunkName: "pages/roles/create" */))
+const _4ad8d915 = () => interopDefault(import('../pages/statistics/client/index.vue' /* webpackChunkName: "pages/statistics/client/index" */))
+const _1a8f3628 = () => interopDefault(import('../pages/statistics/day/index.vue' /* webpackChunkName: "pages/statistics/day/index" */))
+const _1ed5afcc = () => interopDefault(import('../pages/statistics/month/index.vue' /* webpackChunkName: "pages/statistics/month/index" */))
+const _035f3ea2 = () => interopDefault(import('../pages/statistics/trip/index.vue' /* webpackChunkName: "pages/statistics/trip/index" */))
+const _0d8d81af = () => interopDefault(import('../pages/statistics/client/pipeline.vue' /* webpackChunkName: "pages/statistics/client/pipeline" */))
+const _977f47c2 = () => interopDefault(import('../pages/statistics/client/regular.vue' /* webpackChunkName: "pages/statistics/client/regular" */))
+const _3ba57d9c = () => interopDefault(import('../pages/statistics/day/costs.vue' /* webpackChunkName: "pages/statistics/day/costs" */))
+const _3febf740 = () => interopDefault(import('../pages/statistics/month/costs.vue' /* webpackChunkName: "pages/statistics/month/costs" */))
+const _6b5a5d73 = () => interopDefault(import('../pages/statistics/month/fines.vue' /* webpackChunkName: "pages/statistics/month/fines" */))
+const _107bf6e0 = () => interopDefault(import('../pages/statistics/month/models.vue' /* webpackChunkName: "pages/statistics/month/models" */))
+const _39884596 = () => interopDefault(import('../pages/statistics/month/revenue.vue' /* webpackChunkName: "pages/statistics/month/revenue" */))
+const _1f66a823 = () => interopDefault(import('../pages/statistics/trip/costs.vue' /* webpackChunkName: "pages/statistics/trip/costs" */))
 const _3f53627c = () => interopDefault(import('../pages/roles/edit/_id.vue' /* webpackChunkName: "pages/roles/edit/[_]id" */))
 const _3d721fda = () => interopDefault(import('../pages/cars/_table.vue' /* webpackChunkName: "pages/cars/[_]table" */))
 const _d2559ca6 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
@@ -114,9 +126,9 @@ export const routerOptions = {
     component: _706559be,
     name: "spam"
   }, {
-    path: "/statistic",
-    component: _7ab68caa,
-    name: "statistic"
+    path: "/statistics",
+    component: _4ba7a15b,
+    name: "statistics"
   }, {
     path: "/trips",
     component: _9f6ea86e,
@@ -133,6 +145,54 @@ export const routerOptions = {
     path: "/roles/create",
     component: _0a37df83,
     name: "roles-create"
+  }, {
+    path: "/statistics/client",
+    component: _4ad8d915,
+    name: "statistics-client"
+  }, {
+    path: "/statistics/day",
+    component: _1a8f3628,
+    name: "statistics-day"
+  }, {
+    path: "/statistics/month",
+    component: _1ed5afcc,
+    name: "statistics-month"
+  }, {
+    path: "/statistics/trip",
+    component: _035f3ea2,
+    name: "statistics-trip"
+  }, {
+    path: "/statistics/client/pipeline",
+    component: _0d8d81af,
+    name: "statistics-client-pipeline"
+  }, {
+    path: "/statistics/client/regular",
+    component: _977f47c2,
+    name: "statistics-client-regular"
+  }, {
+    path: "/statistics/day/costs",
+    component: _3ba57d9c,
+    name: "statistics-day-costs"
+  }, {
+    path: "/statistics/month/costs",
+    component: _3febf740,
+    name: "statistics-month-costs"
+  }, {
+    path: "/statistics/month/fines",
+    component: _6b5a5d73,
+    name: "statistics-month-fines"
+  }, {
+    path: "/statistics/month/models",
+    component: _107bf6e0,
+    name: "statistics-month-models"
+  }, {
+    path: "/statistics/month/revenue",
+    component: _39884596,
+    name: "statistics-month-revenue"
+  }, {
+    path: "/statistics/trip/costs",
+    component: _1f66a823,
+    name: "statistics-trip-costs"
   }, {
     path: "/roles/edit/:id?",
     component: _3f53627c,

@@ -52,7 +52,8 @@ export default {
                {
                   required: true,
                   message: "Введите описание проблемы",
-                  trigger: "change"
+                  // trigger: "change"
+                  trigger: "blur"
                }
             ]
          }
@@ -100,8 +101,10 @@ export default {
                      title: "Добавление проблемы",
                      desc: "Успешно"
                   });
-                  this.$emit("carsRefresh");
-                  this.show = false;
+                  this.form.text = "";
+                  this.load();
+                  // this.$emit("carsRefresh");
+                  // this.show = false;
                } catch (error) {
                   this.$Notice.error({
                      title: "Добавление проблемы",

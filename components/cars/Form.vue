@@ -117,7 +117,7 @@
 
                   <Row :gutter="30">
                      <Col :sm="24" :md="12">
-                        <FormItem prop="model_lockedSum" label="Залог, рублей">
+                        <FormItem prop="model_lockedSum" label="Залог, ₽">
                            <Input v-model="form.model_lockedSum"></Input>
                         </FormItem>
                      </Col>
@@ -180,7 +180,7 @@
                      <Col
                         :sm="6"
                         :md="4"
-                     >{{ form.model.time2 | declOfNum(label.unit_time_skl, false) }}</Col>
+                     >{{ form.model_time2 | declOfNum(label.unit_time_skl, false) }}</Col>
                      <Col :sm="6" :md="4">
                         <FormItem prop="model_cost2" :show-message="false" required>
                            <Input v-model="form.model_cost2"></Input>
@@ -308,6 +308,39 @@
                            label="Наценка в выходной / праздник, +%"
                         >
                            <Input v-model="form.model_weekendTariff" placeholder="0"></Input>
+                        </FormItem>
+                     </Col>
+                  </Row>
+
+                  <Row :gutter="30">
+                     <Col :sm="24" :md="12">
+                        <FormItem
+                           prop="model_waitingCost"
+                           label="Стоимость режима «Парковка», ₽/минута"
+                        >
+                           <Input v-model="form.model_waitingCost" placeholder="0"></Input>
+                        </FormItem>
+                     </Col>
+                     <Col :sm="24" :md="12">
+                        <FormItem
+                           prop="model_parkingCost"
+                           label="Доп. стоимость на платной парковке, ₽/минута"
+                        >
+                           <Input v-model="form.model_parkingCost" placeholder="0"></Input>
+                        </FormItem>
+                     </Col>
+                  </Row>
+
+                  <Row :gutter="30">
+                     <Col :sm="24" :md="12">
+                        <FormItem prop="model_maxCost" label="Максимальная стоимость в сутки, ₽">
+                           <Input v-model="form.model_maxCost" placeholder="0"></Input>
+                        </FormItem>
+                     </Col>
+
+                     <Col :sm="24" :md="12">
+                        <FormItem prop="model_priceNew" label="Цена продажи, ₽">
+                           <Input v-model="form.model_priceNew" placeholder="0"></Input>
                         </FormItem>
                      </Col>
                   </Row>
@@ -554,7 +587,7 @@ export default {
             minTime: "",
             cost: "",
             unit_time: [],
-            unit_time_skl: []
+            unit_time_skl: [],
          },
 
          select: {
@@ -564,28 +597,28 @@ export default {
             parkingType: {
                allow_paid: "Разрешено с переключателем",
                allow_free: "Разрешено, не требуется оплата",
-               restricted: "Запрещено"
+               restricted: "Запрещено",
             },
             disabled: {
                0: "Виден",
-               1: "Не виден"
+               1: "Не виден",
             },
             notifyDisable: {
                0: "Включена",
-               1: "Остановлена"
+               1: "Остановлена",
             },
             penaltyTracking: {
                1: "Включено",
-               0: "Не включено"
+               0: "Не включено",
             },
             tyre: {
                summer: "Летняя",
                winter: "Зимняя",
-               all: "Всесезонная"
+               all: "Всесезонная",
             },
             brush: {
                1: "Есть",
-               0: "Нет"
+               0: "Нет",
             },
 
             TimeUnit: {
@@ -593,15 +626,15 @@ export default {
                1: "Час",
                2: "День",
                3: "Неделя",
-               4: "Месяц"
+               4: "Месяц",
             },
             CountTariff: {
                1: "Постоянная стоимость",
                2: "Два варианта стоимости",
                3: "Три варианта стоимости",
                4: "Четыре варианта стоимости",
-               5: "Пять вариантов стоимости"
-            }
+               5: "Пять вариантов стоимости",
+            },
          },
 
          form: {
@@ -638,6 +671,10 @@ export default {
             model_description: "",
             model_tachometer1: null,
             model_tachometer2: null,
+            model_waitingCost: null,
+            model_parkingCost: null,
+            model_maxCost: null,
+            model_priceNew: null,
 
             car_number: null,
             car_partner: null,
@@ -652,7 +689,7 @@ export default {
             car_penaltyTracking: "0",
             car_startDate: null,
             car_tyre: "summer",
-            car_brush: "0"
+            car_brush: "0",
          },
 
          rules: {
@@ -660,23 +697,23 @@ export default {
                {
                   required: true,
                   message: "Введите номер автомобиля",
-                  trigger: "change"
-               }
+                  trigger: "change",
+               },
             ],
             car_partner: [
                {
                   required: true,
                   message: "Выберите партнера, которому принадлежит автомобиль",
-                  trigger: "change"
-               }
+                  trigger: "change",
+               },
             ],
 
             model_title: [
                {
                   required: true,
                   message: "Введите название модели",
-                  trigger: "change"
-               }
+                  trigger: "change",
+               },
             ],
 
             model_category: [
@@ -684,31 +721,31 @@ export default {
                   type: "array",
                   required: true,
                   message: "Выберите категорию",
-                  trigger: "change"
-               }
+                  trigger: "change",
+               },
             ],
 
             model_lockedSum: [
                {
                   required: true,
                   message: "Введите сумму залога",
-                  trigger: "change"
-               }
+                  trigger: "change",
+               },
             ],
 
             model_costPerHour: [
                {
                   required: true,
                   message: "Введите стоимость проката",
-                  trigger: "change"
-               }
-            ]
-         }
+                  trigger: "change",
+               },
+            ],
+         },
       };
    },
 
    watch: {
-      value: function(id) {
+      value: function (id) {
          this.tab = "car";
 
          if (id == 0) {
@@ -722,7 +759,7 @@ export default {
             this.load();
          }
       },
-      show: function(val) {
+      show: function (val) {
          if (!val) {
             this.$emit("input", null);
             this.select = {};
@@ -730,42 +767,42 @@ export default {
       },
 
       form: {
-         handler: function(val) {
+         handler: function (val) {
             this.label.unit_time_skl = ["минуты", "минут", "минут"];
 
             if (val.model_TimeUnit == 0) {
                this.label.minTime = "Минимальное время проката в минутах";
-               this.label.cost = "Стоимость проката, рублей / минута";
+               this.label.cost = "Стоимость проката, ₽/минута";
                this.label.unit_time = ["минута", "минуты", "минут"];
                this.label.unit_time_skl = ["минуты", "минут", "минут"];
             }
             if (val.model_TimeUnit == 1) {
                this.label.minTime = "Минимальное время проката в часах";
-               this.label.cost = "Стоимость проката, рублей / час";
+               this.label.cost = "Стоимость проката, ₽/час";
                this.label.unit_time = ["час", "часа", "часов"];
                this.label.unit_time_skl = ["часа", "часов", "часов"];
             }
             if (val.model_TimeUnit == 2) {
                this.label.minTime = "Минимальное время проката в днях";
-               this.label.cost = "Стоимость проката, рублей / день";
+               this.label.cost = "Стоимость проката, ₽/день";
                this.label.unit_time = ["день", "дня", "дней"];
                this.label.unit_time_skl = ["дня", "дней", "дней"];
             }
             if (val.model_TimeUnit == 3) {
                this.label.minTime = "Минимальное время проката в неделях";
-               this.label.cost = "Стоимость проката, рублей / неделя";
+               this.label.cost = "Стоимость проката, ₽/неделя";
                this.label.unit_time = ["неделя", "недели", "недель"];
                this.label.unit_time_skl = ["недели", "недель", "недель"];
             }
             if (val.model_TimeUnit == 4) {
                this.label.minTime = "Минимальное время проката в месяцах";
-               this.label.cost = "Стоимость проката, рублей / месяц";
+               this.label.cost = "Стоимость проката, ₽/месяц";
                this.label.unit_time = ["месяц", "месяца", "месяцев"];
                this.label.unit_time_skl = ["месяца", "месяцев", "месяцев"];
             }
          },
-         deep: true
-      }
+         deep: true,
+      },
    },
 
    methods: {
@@ -773,12 +810,12 @@ export default {
          this.form.model_id = this.value;
 
          let categories = await this.$axios.$get("/categories/getlist/", {
-            progress: false
+            progress: false,
          });
          this.select.categories = categories.data;
 
          let models = await this.$axios.$get("/cars/getmodels/", {
-            progress: false
+            progress: false,
          });
          this.select.models = models.data;
 
@@ -795,23 +832,24 @@ export default {
          // }
 
          let partners = await this.$axios.$get("/partners/getlist/", {
-            progress: false
+            progress: false,
          });
          this.select.partners = partners.data;
          this.show = true;
       },
 
       async save(name) {
-         this.$refs[name].validate(async valid => {
+         this.$refs[name].validate(async (valid) => {
             if (valid) {
                try {
+                  console.log(this.form);
                   await this.$axios.$post("/cars/create/", this.form, {
-                     progress: false
+                     progress: false,
                   });
 
                   this.$Notice.success({
                      title: "Добавление автомобиля",
-                     desc: "Успешно"
+                     desc: "Успешно",
                   });
 
                   this.$emit("carsRefresh");
@@ -819,19 +857,19 @@ export default {
                } catch (error) {
                   this.$Notice.error({
                      title: "Добавление автомобиля",
-                     desc: error.response.data.message
+                     desc: error.response.data.message,
                   });
                }
             } else {
                this.$Notice.error({
                   title: "Заполните форму",
                   desc:
-                     "Вы допустили ошибки в форме, проверьте и попробуйте еще раз"
+                     "Вы допустили ошибки в форме, проверьте и попробуйте еще раз",
                });
             }
          });
-      }
-   }
+      },
+   },
    // beforeDestroy() {
    //    console.log("beforeDestroy");
    // }

@@ -51,6 +51,9 @@ export default {
 		'@/plugins/methods',
 		'@/plugins/axios',
 		'@/plugins/ymapPlugin',
+		'@/plugins/swiper',
+		'@/plugins/charts',
+
 	],
 
 	// { src: '~/plugins/ymapPlugin.js',  mode: 'client' }
@@ -59,7 +62,12 @@ export default {
 	** Nuxt.js dev-modules
 	*/
 	buildModules: [
+		'@nuxtjs/moment'
 	],
+	moment: {
+		defaultLocale: 'ru',
+		locales: ['ru']
+	},
 	/*
 	** Nuxt.js modules
 	*/
@@ -69,6 +77,7 @@ export default {
 		'@nuxtjs/auth',
 		'@nuxtjs/style-resources'
 	],
+
 	/*
 	** Axios module configuration
 	** See https://axios.nuxtjs.org/options
@@ -107,6 +116,7 @@ export default {
 	** Global CSS
 	*/
 	css: [
+		// 'swiper/css/swiper.css',
 		'@/assets/fonts/fa/css/all.min.css',
 		'@/assets/fonts/ProximaNova/stylesheet.css',
 

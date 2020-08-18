@@ -10,6 +10,25 @@
       <CarForm v-model="modal.car.form.model" :action="modal.car.form.action" @carsRefresh="load" />
       <Delivery v-model="modal.car.delivery" @carsRefresh="load" />
       <Problems v-model="modal.car.problems" @carsRefresh="load" />
+      <ClientInfo v-model="modal.client.info.id" :ses="modal.client.info.ses" mode="cars" />
+      <Compensations v-model="modal.trip.compensations.list" />
+      <AddCompensation
+         v-model="modal.trip.compensations.add"
+         section="cars"
+         mode="trip"
+         @carsRefresh="load"
+      />
+      <BlockTrip
+         v-model="modal.trip.block.id"
+         :action="modal.trip.block.action"
+         section="cars"
+         @carsRefresh="load"
+      />
+      <CarAvailable
+         v-model="modal.car.available.id"
+         :action="modal.car.available.action"
+         @carsRefresh="load"
+      />
 
       <div class="card-box">
          <div class="tabs-cars">
@@ -28,7 +47,7 @@
             </template>
          </div>
 
-         <div class="table-responsive p-4">
+         <div class="table-responsive py-4">
             <table class="table cars-list table-sm table-borderless">
                <tbody>
                   <template v-for="(category, category_id) in table.categories">
@@ -46,7 +65,12 @@
                               @carCreate="car_form(type_id, 'create')"
                               @carDelivery="car_delivery(car_id)"
                               @carProblems="car_problems(car_id)"
+                              @clientInfo="client_info"
                               @carsRefresh="load"
+                              @tripCompensations="trip_compensations"
+                              @tripAddCompensation="trip_add_compensation"
+                              @tripBlock="trip_block"
+                              @carAvailable="car_available"
                            />
                         </template>
                         <!-- Авто -->
@@ -65,10 +89,15 @@
 
 <script>
 import Car from "@/components/cars/Car";
-import CarInfo from "@/components/cars/Info2";
+import CarInfo from "@/components/cars/Info";
+import CarAvailable from "@/components/cars/Available";
 import CarForm from "@/components/cars/Form";
 import Delivery from "@/components/cars/Delivery";
 import Problems from "@/components/cars/Problems";
+import ClientInfo from "@/components/clients/Info";
+import Compensations from "@/components/trips/compensations/List";
+import AddCompensation from "@/components/trips/compensations/Add";
+import BlockTrip from "@/components/trips/Block";
 
 export default {
    middleware: ["auth", "page"],
@@ -77,7 +106,12 @@ export default {
       CarInfo,
       CarForm,
       Delivery,
-      Problems
+      Problems,
+      ClientInfo,
+      Compensations,
+      AddCompensation,
+      BlockTrip,
+      CarAvailable,
    },
    validate({ params }) {
       if (params.table === undefined) {
@@ -91,17 +125,17 @@ export default {
          "not_available",
          "free",
          "owner",
-         "disabled"
+         "disabled",
       ].includes(params.table);
    },
    head: {
-      title: "Парк автомобилей / VORON BLACK"
+      title: "Парк автомобилей / VORON BLACK",
    },
    data() {
       return {
          process: {
             polling: null,
-            time: 10000
+            time: 10000,
          },
 
          tables: [],
@@ -112,12 +146,32 @@ export default {
                info: null,
                form: {
                   model: null,
-                  action: "create"
+                  action: "create",
                },
                delivery: null,
-               problems: null
-            }
-         }
+               problems: null,
+               available: {
+                  id: null,
+                  action: null,
+               },
+            },
+            client: {
+               info: {
+                  id: null,
+                  ses: null,
+               },
+            },
+            trip: {
+               compensations: {
+                  list: null,
+                  add: null,
+               },
+               block: {
+                  id: null,
+                  action: null,
+               },
+            },
+         },
       };
    },
 
@@ -125,7 +179,7 @@ export default {
       let response = await $axios.$get("/cars/getlist?active=" + params.table);
       return {
          tables: response.data.tables,
-         table: response.data.tables[params.table]
+         table: response.data.tables[params.table],
       };
    },
 
@@ -160,7 +214,7 @@ export default {
             let response = await this.$axios.$get(
                "/cars/getlist?active=" + this.$route.params.table,
                {
-                  progress: false
+                  progress: false,
                }
             );
 
@@ -168,7 +222,7 @@ export default {
             this.table = this.tables[this.$route.params.table];
          } catch (error) {
             this.$Notice.error({
-               title: "Ошибка обновления"
+               title: "Ошибка обновления",
             });
          }
       },
@@ -185,8 +239,26 @@ export default {
       },
       car_problems(id) {
          this.modal.car.problems = id;
-      }
-   }
+      },
+      client_info(id, ses) {
+         this.modal.client.info.id = id;
+         this.modal.client.info.ses = ses;
+      },
+      trip_compensations(id) {
+         this.modal.trip.compensations.list = id;
+      },
+      trip_add_compensation(id) {
+         this.modal.trip.compensations.add = id;
+      },
+      trip_block(id, action) {
+         this.modal.trip.block.id = id;
+         this.modal.trip.block.action = action;
+      },
+      car_available(id, action) {
+         this.modal.car.available.id = id;
+         this.modal.car.available.action = action;
+      },
+   },
 };
 </script>
 
@@ -285,11 +357,15 @@ export default {
 }
 
 table tr td:first-child {
-   border-radius: 10px 0 0 10px;
+   // border-radius: 10px 0 0 10px;
+   padding-left: 1.5rem !important;
 }
 
 table tr td:last-child {
-   border-radius: 0 10px 10px 0;
+   // border-radius: 0 10px 10px 0;
+   // border-radius: 0 !important;
+
+   padding-right: 1.5rem !important;
 }
 
 table {

@@ -13,12 +13,15 @@ import { createStore } from './store.js'
 /* Plugins */
 
 import nuxt_plugin_axios_26166851 from 'nuxt_plugin_axios_26166851' // Source: ./axios.js (mode: 'all')
+import nuxt_plugin_moment_a93b9932 from 'nuxt_plugin_moment_a93b9932' // Source: ./moment.js (mode: 'all')
 import nuxt_plugin_iview_2298c11a from 'nuxt_plugin_iview_2298c11a' // Source: ../plugins/iview (mode: 'all')
 import nuxt_plugin_components_567e580a from 'nuxt_plugin_components_567e580a' // Source: ../plugins/components (mode: 'all')
 import nuxt_plugin_filters_2abc1387 from 'nuxt_plugin_filters_2abc1387' // Source: ../plugins/filters (mode: 'all')
 import nuxt_plugin_methods_d2c08984 from 'nuxt_plugin_methods_d2c08984' // Source: ../plugins/methods (mode: 'all')
 import nuxt_plugin_axios_2228ef02 from 'nuxt_plugin_axios_2228ef02' // Source: ../plugins/axios (mode: 'all')
 import nuxt_plugin_ymapPlugin_18bbd84a from 'nuxt_plugin_ymapPlugin_18bbd84a' // Source: ../plugins/ymapPlugin (mode: 'all')
+import nuxt_plugin_swiper_419e176c from 'nuxt_plugin_swiper_419e176c' // Source: ../plugins/swiper (mode: 'all')
+import nuxt_plugin_charts_25799349 from 'nuxt_plugin_charts_25799349' // Source: ../plugins/charts (mode: 'all')
 import nuxt_plugin_plugin_826f9666 from 'nuxt_plugin_plugin_826f9666' // Source: ./auth/plugin.js (mode: 'all')
 
 // Component: <ClientOnly>
@@ -195,6 +198,10 @@ async function createApp(ssrContext, config = {}) {
     await nuxt_plugin_axios_26166851(app.context, inject)
   }
 
+  if (typeof nuxt_plugin_moment_a93b9932 === 'function') {
+    await nuxt_plugin_moment_a93b9932(app.context, inject)
+  }
+
   if (typeof nuxt_plugin_iview_2298c11a === 'function') {
     await nuxt_plugin_iview_2298c11a(app.context, inject)
   }
@@ -217,6 +224,14 @@ async function createApp(ssrContext, config = {}) {
 
   if (typeof nuxt_plugin_ymapPlugin_18bbd84a === 'function') {
     await nuxt_plugin_ymapPlugin_18bbd84a(app.context, inject)
+  }
+
+  if (typeof nuxt_plugin_swiper_419e176c === 'function') {
+    await nuxt_plugin_swiper_419e176c(app.context, inject)
+  }
+
+  if (typeof nuxt_plugin_charts_25799349 === 'function') {
+    await nuxt_plugin_charts_25799349(app.context, inject)
   }
 
   if (typeof nuxt_plugin_plugin_826f9666 === 'function') {
