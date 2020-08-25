@@ -14,7 +14,8 @@
             <tr class="ivu-table-row">
                <td v-for="(column, index) in columns" :class="alignCls(column)">
                   <div class="ivu-table-cell" :class="cellCls(column)">
-                     <slot :name="`${column.key}_summary`" :value="data[column.key].value">
+                     <slot :name="`${column.key}_summary`" :value="data_values">
+                        <!-- data[column.key].value -->
                         <b>{{ data[column.key].value }}</b>
                      </slot>
                      <!-- <span>{{ data[column.key].value }}</span> -->
@@ -42,6 +43,25 @@ export default {
          default: false,
       },
    },
+
+   data() {
+      return {
+         data_values: {},
+      };
+   },
+
+   mounted() {
+      let vm = this;
+      let array = {};
+      Object.keys(vm.data).map(function (objectKey, index) {
+         let key = vm.data[objectKey]["key"];
+         let value = vm.data[objectKey]["value"];
+         array[key] = value;
+      });
+      this.data_values = array;
+      // console.log(this.data_values);
+   },
+
    methods: {
       cellCls(column) {
          return [

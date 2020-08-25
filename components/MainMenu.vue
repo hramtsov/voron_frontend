@@ -1,7 +1,7 @@
 <template>
    <ul :class="['main-menu', cl]">
       <li v-for="(item, key) in menu" v-cloak>
-         <nuxt-link exact :to="item.link" active-class="active">
+         <nuxt-link :to="item.link" active-class="active" :exact="key == 'main'">
             <i :class="['fad', item.icon]"></i>
             <span class="truncate">{{ item.text }}</span>
          </nuxt-link>

@@ -61,7 +61,7 @@
                :slot="`${column.key}_summary`"
                slot-scope="props"
             >
-               <slot :name="`${column.key}_summary`" :total="props.value"></slot>
+               <slot :name="`${column.key}_summary`" :row="props.value"></slot>
             </template>
          </table-summary>
          <div

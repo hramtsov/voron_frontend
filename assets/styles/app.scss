@@ -289,10 +289,27 @@ table thead .ivu-table-cell {
 table thead .ivu-table-cell {
 	padding-left: 4px;
 	padding-right: 4px;
+
+	font-size: 14px;
 }
+
+// table thead th .ivu-table-cell {
+// 	font-size: 13px;
+// }
 
 .ivu-table-summary {
 	border-top: none;
+}
+
+/////
+
+.ivu-table-header {
+	border-radius: 8px;
+}
+
+.ivu-table-fixed-header {
+	border-top-left-radius: 8px;
+	border-bottom-left-radius: 8px;
 }
 
 ///////
